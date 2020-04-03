@@ -1,0 +1,1677 @@
+pdl-idler CHANGELOG
+
+[version 0.9025]
+  ?
+
+[version 0.9025]
+  + remove xorg/xvfb display server pid mark and deduce by display id instead
+  + simplify display driver detection in status and cache hl2_pid gather
+  + remove inotifywait dependancy and use wineserver -w instead in registry prep
+  + only check for defunct hl2 pids on startup and organize clutch deletions
+  + move hl2 pid check from disconnect() to before the action is started
+  + simplify killing of hl2 in stop, and preserve files in logout with $debug
+  + increase sourceirc msg delay to 2 seconds and always compile pdl-idler.sp
+  + only run regedit on wine prep instead of using obsolete font key check
+  + generate sourcemod items.kv file after steamcmd instead of in addon install
+  + always concatenate stock lcfg with userdata one even if it already exists
+  + remove file check in login wait and hpid check from client_map gather
+  + simplify connect query wait and fix not defaulting drop_irc/chat to 'yes'
+  + show y|n for each of the drop variables in helper start output message
+  + fix using uid in helper chat urls and multiple irc sourcemod function load
+
+[version 0.9024]
+  + include sourceirc.cfg and irc-connected.cfg for sv target in log pager
+  + overhaul/simplify/fix sleep action and cache steam pid checks
+  + fix sourcing config file before setting default variables
+  + silence potential error if steamcmd_log wasn't created
+  + change default irc server to gamesurge.net and simplify install/config
+  + use new variable 'irc_server_user' for use with authserver in irc-connected
+
+[version 0.9023]
+  + rearrange some global statements/declarations for clarity/hardening
+  + use env instead of checking lcfg when deciding to logout/delete in sigint
+  + improve cid/uid gathering and cache values from setaccount() or login()
+  + don't use system env var 'uid' in trade function sender prep
+  + fix node binary name not being sourced in common/helper and break type check
+  + run stop in logout evem if spid as latter's call to stop_node was removed
+  + only stop node chat enter sessions in exit()
+  + don't check available ports/server twice if the server was prestarted
+  + export winedebug=-all globablly for either login mode
+  + fix not removing old zip files in steam package processing
+  + only migrate ssfn if both entry and file exist and fix sourcemod tarball rm
+  + revert helper log/retrieve, and check caps/start drop_chat in farm
+
+[version 0.9022]
+  + use bump mark with farm construction version file
+  + properly cross link stf/addons into the tf/pdl/farm
+  + ensure linking of tf/pdl>stf/pdl directory instead of only after sv steamcmd
+  + download mm/sm tarballs in addons dir for when it is removed and flip ver
+
+[version 0.9021]
+  + get and show steam connection cellid in list and authenticated login message
+  + hide occasional error resulting from steam.exe rewriting lcfg during login
+  + shorten selection of client connection cache hash from 6 to 4 characters
+  + add more granularity to application size gathering
+  + preemptively start idle server (if needed) before farm login
+  + remove sourcemod/metamod versions from srcds hostname cvar
+  + copy atf/gameinfo to stf and remove content search paths there
+  + fix irc plugin loading when irc server is 'none'
+  + include tf/maps and stf/addons symlink into client farm resources
+  + move sv model extractions and now hltv/replay/server.res to cl construction
+  + replace server farm construction with simple link to tf/pdl files
+  + show retry attempts in password warning flag in auth login message
+  + fix consuming login window closing in play()
+  + use 32 instead of $idle_max for xvfb/display account limit
+  + copy server farm gameinfo to farm client and just change pdl directory
+  + remove -nopreload/models from farm cmdline to fix drop from smaller server
+
+[version 0.9020]
+  + kill and wait for errant wineservers before steam merge clutch
+  + remove farm version file in steam merge clutch
+  + only check for cloud/stopping once in logout() and fix timeout variable
+  + bump sourcemod to latest 1.7 branch snapshot
+  + fix drop chat account variable in helper
+
+[version 0.9019]
+  + declare functions before global code other than shell check (sans tprint)
+  + revert to improved finish routine run at both sigint or finish with untrap
+  + don't copy output to stderr and adjust log/logout tf2+ccfg file locations
+  + fix list item/line typo, use lsmod to check virtual gpu and drop lspci dep
+  + remove tf2 license gather function and asterisk password entry function
+  + run steam.exe via C:/ drive label instead of absolute file location
+  + remove idler_join and idler_spectate actions and rely on user commands
+  + implement discover action to browse through store discovery queues
+  + fix receiver/trader uid check and don't use 'I' variable name for loops
+  + run common source+trap after checks and source conf in common
+  + add inotifywait and missed bc deps and remove sudo for now
+  + always logout when performing a gist script ugprade
+  + fill account information array after conf source instead of input processing
+  + remove now obsolete passwd script cleanup
+  + clutch merge steam windows/cmd dir with obsolete shared tf2 file changes
+  + remove farm debugging mode and paramater check
+  + declare terminal type as xterm and use dynamic terminal width for output
+  + now use account mark on steam proc to differentiate due to C:\ reference
+  + improve/fix is_logged_in lcfg check
+  + unset last wid if new window isnt found and return don't break on pause stop
+  + improve steam web helper memory check and fix commandable check
+  + stop node client before hl2 in stop instead of after
+  + remove unnecessary calls to reset cmd file in logout and simplify acct size
+  + get full authentication message/state for login checks
+  + improve file blocks with new wait+skip mode and improve close_window()
+  + fix getting app content_log state from previous process if log still exists
+  + reduce logout timeout from 120 to 60 seconds
+  + also show display and account size in killing steam message for logout
+  + condense logout close window calls and improve cloud/dl finish check
+  + don't bother changing lcfg avatars or use login_timeout variable in logout
+  + require account passwords and improve display check in setaccount()
+  + fail and exit if uninstall/delete cannot remove contents
+  + allow for multple files and always check for digits in version()
+  + remove client fps checking and change key frequency from 350 to 300 ms
+  + ignore potentional errant 'anonymous' dirs when getting cid from userdata/
+  + fix/adjust/revert steam app size and version gather functions
+  + improve steamcmd args, log, screen name, dir prep, and check for two-factor
+  + have steam home directories restored after steamcmd instead of server start
+  + improve type_input ctrl-a handling and slow delay from 250 to 300 ms
+  + simplify cred entry background child now only used for guard input
+  + no longer reset gameinfo file as each account will have their own
+  + neglect msmhtml.dll to avoid gecko and export winedbg+crashhandler+msi
+  + remove check/link for shared package directory
+  + use missing package files instead of version file to deduce need for upgrade
+  + avoid deleting steam/appcache and steamcmd files on ui download/extraction
+  + create empty gameoverlayrender.log file after ui extraction
+  + silence url_list log concatenation and ensure removal of package lock file
+  + no longer remove/relink package dir and conditionally fill steamappdata.vdf
+  + improve vnc arg/bin checks, don't chmod passwd file, and remove ssh support
+  + simplify/run wineboot in foreground without gecko check
+  + use inotifywait instead of wineserver-w before writing registry backups
+  + check for and announce existence of crash file in steam init
+  + compare web api file to client inf once per invocation before steamcmd
+  + don't modify/create tf2 client application manifest before login
+  + run steamcmd to check/validate tf2 cl+sv before login init with credentials
+  + make cl/sv farm resource collections and plugin installations after steamcmd
+  + remove loop creating player class config files with con marker echos
+  + include required new pvp/mym resource files in client farm construction
+  + assemble account apps/tf2 directory link stucture to have seperate gameinfo
+  + adjust and simplify client login prep and port selection
+  + use avatars/loggedin instead of server window check for login loop
+  + run logout to clean files before failing in login and improve log checking
+  + improve and simplify guard code entry with kill child process after read
+  + remove subscriber window close as it's assumed to only happen before restart
+  + only check guard notifcation wid once and remove unneeded reconfigure var
+  + no longer remove package link or block on gameinfo on login finish
+  + don't check for ssfn files and output error/warning in login finish
+  + backup an exisiting file in share when migrating ssfn
+  + overhaul login loop sans password prompt, timeouts, and second chance retry
+  + remove password logic from node login prep and show error result on failure
+  + fix f2p prep and improve efficiency of account creation routine
+  + remove presumably uncessary subscriber close routine before login finish
+  + remove check/fail if a steam app is running in node gc prep
+  + concatenate crates constant with itself if set prior to invocation
+  + simplify/generalize load prep/logic
+  + anchor to a previous client shutdown in loading wait if log file was present
+  + don't block, check for micro content updates, or reset files in load
+  + remove support for slower alternative command line passing for tf2 clients
+  + try -noassert common command line parameter and fix sv hostname cvar
+  + check for another bad challenge message in connect
+  + adjust gameinfo farm sed to account for new vgui keyword and neglect all vpk
+  + defer farm version file write until after call to load finishes
+  + try 'thread -1' command line paramater for farm clients
+  + fix killing pulseaudio clients in farm and announce after doing so
+  + move helper initialization code to helper.sh and remove pulseaudio startup
+  + pause then gather output of helper initialization and fix drop_chat variable
+  + reinclude halloween spawn code for posterity in sourcemod plugin
+  + delay initial irc message(s) until server fully joins channel
+  + remove unused client trigger alias and move start echo markers to autoexec
+  + add shortcut url for discover action to url list
+
+[version 0.9018]
+  + condense/improve initial check deduction and store/cache wine version
+  + always assume logout requirement upon gist upgrade
+  + colorize/standardize timestamped messages that request input
+  + simplify version gathering without inherent 'v'
+  + merge command/play function pairs and simplify download routine
+  + remove quotes around console var in connection gather and improve disconnect
+  + condense node functions and don't wait 0.4 sec after focus on main display
+  + fix package linking, url list cat in login, and use winedebug-all for low
+  + reorder tf2 client file construction in login with some moved from load
+  + improve node chat prep and merge cl/sv size+version (now buildid) functions
+  + remove tee call, farm bump var, stream chmod clutch, and alias.cfg reset
+  + write farm ver file before finish and colorize update available window mark
+  + improve steamcmd installation check and content adjust output messages
+  + don't try to wrangle the two $HOME/.steam* symlinks before steamcmd
+  + sleep before checking content in steamcmd wait loop
+  + move server cvars from command line to autoexec.cfg and simplify startup
+  + remove wait and queue irc messages that are to be sent until channel join
+  + erase server lock file if one remains from a cancelled prior start
+  + improve farm display deduction and fix not starting another xvfb server
+  + try to catch more hats/miscs and event crates in helper/sourcemod item code
+  + fill in missing action description in help file
+
+[version 0.9017]
+  + improve gist procedure and retrieve/show usage text in help from file
+  + adjust delete function and move invalid username check to set_account
+  + merge and compress install/login functions and eschew prefix bumping
+  + adjust package dir procedure and skip checking /opt/wine-staging
+  + keep/protect steamwindows/vr directory during upgrade
+  + retry download if ui client zip file is corrupt and remove url list clutch
+  + no longer fill config/dialogconfig.vdf, or use app manifest bump
+  + rework/improve dll negation scheme and use dwrite.dll for hi logins
+  + start either display at the same time on creation login and skip :99 x11vnc
+  + improve wineboot procedure and don't prompt on install for unknown accounts]
+  + don't use login.pdl state file and seperate registry into project file
+  + simplify steam init message and remove userdata clutches
+  + move initial localconfig.vdf file to a seperate project file
+  + no longer check/apply steam/tf2 cloud clutches in login
+  + remove clearbeta steam switch, try singlecore, and simplify init log reset
+  + colorize password entry mark in authenticated output message
+  + improve create window check and remove invalid email check/delete
+  + remove auth error reinstall and just fail on third attempt
+  + don't wait for full logout before restart for initial account configuration
+  + improve/fix log paging function and support all *_log.txt files
+  + colorize/embellish/fix list, backpack, and status output
+  + remove restart/reconnect/reinstall/relogin actions
+  + reset terminal text attributes on finish and improve sigint checks/output
+  + apply tf2 dll restrictions only at farm login and remove path/lc_all/debug
+  + colorize and accent timestamped messages with special highlighting
+  + improve steam pid gather and window functions and underline memory values
+  + remove empty share/$acct/$hostname/logs dir on logout and show account size
+  + check email in set account and use more convenience variables
+  + quicken xfce4 disable procedure by not waiting for xconf file update
+  + remove unnecessary secondary appstate check in load
+  + adjust mm/sm downloading and create the metamod.vdf file
+  + improve network address gather in connect and check items first in farm
+  + show timestamp in server command log write
+  + fix showing invalid command for irc gameinfo/status
+  + wait 3 seconds before server quit check on client disconnect
+
+[version 0.9016]
+  + improve download function and shorten many applicable variable constructions
+  + don't use no-hsts for wget as it will crash if not present and delete file
+  + remove hide login mode option and only use it for farm logins
+  + overhaul and simplify wineserver handling without using process marks/waits
+  + don't use retro x/xvfb process marks and instead check for screen sessions
+  + start x11vnc for normal logins even if the xorg wasn't started by pdl
+  + fix key_press deley parameter for single key calls
+  + improve steam client ui manifest get/check
+  + remove normal account login limit based on wineserver count
+  + improve/generalize sleep/pause function and remove unused farm hl2 proc mark
+  + remove obsolete call to ensure client offline state on login
+  + delete link to package folder upon login to try to block background updating
+  + always show action duration after every output message
+  + improve/condense process usage gather and status functions
+  + remove gnome support in power manager function
+  + improve account display gather, arg check, and display server stop
+  + remove obsolete headtrack_oculus from dll exclusion variable
+  + fix displaying other pid in block file function and fix logout typo
+  + only check server player count once in connect
+  + remove automatic linking to share/steamcmd in connect
+  + don't block or mkdir if server is started and save (don't merge) screenlog
+  + remove check for missed steamcmd download nor use ver file for resources
+  + disable sourcemod logging in core.cfg at time of installation
+  + modify server gameinfo after sourceirc installation
+  + replace use of and modifications to sourceirc plugins with reduced sp code
+  + improve network device gather and non noshaderapi checks/sleep in connect
+  + try mat_managed_textures=0 in for farm cvar and remove wavonly parameter
+
+[version 0.9015]
+  + drop current clutches and use no-hsts for wget downloads
+  + remove relogin action and employ hostname variable instead of the program
+  + use hostnames in lock files and wait if another host is claimant
+  + bump prefix to 9 for/and return appcache to local wineprefix
+  + no longer link to logs directory for convenience in wineprefix root
+  + remove calls to get data from the 'share/$acct/cred' file
+  + use warning for all block file waits and remove obsolete windows.lock find
+  + concatenate extra urls from new file for steam if needed in install
+  + no longer check/react to steam pid status in register/exhibit/socialize
+  + use custom url to skip inital profile edit page in exhibit routine
+  + remove kill argument from logout call in password entry login timeout
+  + no longer check for seconds lost string on connection log on login
+  + show action duration upon login and remove cred log target
+  + remove current routine for sale events in socialize
+  + clean any xdotool lock files on singular invocation finish
+  + remove wine staging shared memory variable
+  + bump tf2 resources to c and improve steam pid gather
+  + improve node login background gather
+  + avoid initial pause if killing client in stop
+  + show action duration when starting logout and remove hosts log directory
+  + arrest client memory leak by stopping twich with chmod in load construction
+  + fix needlessly checking srcds by using patchver to compare and quell error
+  + bump sourcemod to 1.7.3-5303 and dont change sourcemod debug logging
+  + compile sp/items.kv once per smod install and use per-server irc.cfg
+  + remove server gameinfo lock before waiting on started marker
+  + also check for vac banned marker in connect insecure client logout
+  + try reducing datacachesize farm client var from 64 to 32
+  + catch more special items for improved helper sounds and sourcemod irc drops
+
+[version 0.9014]
+  + remove xdpyinfo dependancy for simplified dialogconfig.vdf fill
+  + change sample.conf to example and optimize grep/cat calls by combining them
+  + show action description if help action is supplied with an argument
+  + move class cfg file generation to client construction instead of login
+  + fill dialogconfig once in install instead of every login
+  + always fill steamappdata.vdf with more xdotool key presses for create
+  + remove dcat function and adjust grep calls if needed for dos newline files
+  + disable client game streaming for farm login and adjust status ver output
+  + return cl_disablehtmlmotd tf2 client cvar for low mode
+  + use '-no-cef-sandbox' steam command line argument to fix web components
+  + also check for two-factor-code error in login guard code without window key
+  + dont call register or exhibit after an account is created in login
+  + correct server file in log and remove insecure start/textmode functionality
+  + fix mode and llvm checks in status and remove report function
+  + remove old call to link low.cfg and adjust content checks and pauses in load
+  + ensure executability for srcds script/binary and sourcemod compile.sh/spcomp
+  + fix server item schema check and enforce steamcmd validate variable
+  + harden sourceirc installation check and adjust client map loading message
+  + check for vac message instead of map cfg load error to deduce server start
+  + use proper output for item failure message in helper
+  + fix 200 fps command alias variable in autoexec.cfg
+
+[version 0.9013]
+  + dont require gcc and clutch rename steamgui directory to steamwindows
+  + remove alias.cfg file with auto-movement client aliases
+  + return to per user appcache share to prevent redownloading of app data
+  + improve steam windows client manifest download/checking
+  + remove xserver version function since Xorg may not be able to run
+  + coordinate/optimize xdotool window selection/focus and display locking
+  + bump prefix to 9 and support/maintain link to 'share/steamwindows/package'
+  + set survey date to 2050 once in ccfg creation instead of a login sed
+  + use block to project just client data not whole invocations that login
+  + download the non-vz variants of client package files and remove vunzip
+  + don't erase tf2 download/temp in install, and move manifest sed to login
+  + make client autoexec.cfg a static project file and link to it
+  + improve login logic without download code, windowunmap call, and error close
+  + fix erasing tf2 account files in certain login error conditions
+  + adjust to removal of secret question stage in account creation
+  + remove chat window move, and include hostname in server log filenames
+  + correct helper pid check in status
+  + fix stall on trade confirmation and improve focus and close window functions
+  + close guard window if it is present in logout and fix drops file node error
+  + support and maintain link to 'share/steamcmd' if it exists
+  + only run steamcmd to update server if steam.inf differs from the client
+  + don't preserve ~/Steam directory before relinking to steamcmd
+  + fix syntax error on downed item server check in helper
+
+[version 0.9012]
+  + remove obsolete trade confirmation block/unlock logic and cred mark
+  + clutch file permission reset for sharedconfig.vdf in login
+  + catch undefined result for the confirmation required trade result
+  + don't disable power management for trade reciever backgrounds
+  + delete account drops file after a successful node backpack sort
+  + remove obsolete item discard panel client ui mark
+  + disable drop_sound variable by default and improve chat variable check
+  + use item data instead of ui mark to deduce a full backpack in helper
+  + if configured, stop/deterge/resume farming in the helper on a full backpack
+  + improve and fully fix helper stall on delivered gifts
+
+[version 0.9011]
+  + disallow apikey set in environment so as to force conf requirement
+  + update wine dependency check to require 1.8 or later
+  + remove chmod calls to mark the script as executable
+  + don't recognize high_accounts variable and remove normal mode logins
+  + reset localconfig separately from wineprefix bump
+  + no longer clear share/config/htmlcache directory in login/logout
+  + remove modified farm steam skin that hid notifications to prevent a crash
+  + don't bother restricting file permissions on local tf/config.cfg
+  + prune client cfgs avoiding assumptions and unnecessary cloud contamination
+  + no longer alter or rely on permissions for files in share with clutch resets
+  + hide file not found error when checking trade flag in cred file
+  + remove wine version check, and lcfg toggle for overlay support in login
+  + apply one default jumplist setting regardless of login mode
+  + hide possible steam controller dialog window in login with lcfg entry
+  + enable streaming and relevant settings for all login modes
+  + use pdl flag in sharedconfig to initiate and mark cloud reset of the file
+  + reset tf2 cloud config.cfg file if it contains and old cvar marker in login
+  + remove farm/low specific registry options as well other dinput/cloud keys
+  + use only the alsa sound driver in registry setting application
+  + adjust to lack of error window on incorrect password and catch retry limits
+  + fix not showing explorer.exe pid in login output
+  + reference scfg file in remote userdata dir instead of local config in log
+  + disable power management before client launch/update instead of after start
+  + delete srcds farm client version file when rebuilding client data
+  + extract new farm dep scripts/paintkitmaster
+  + provide error.vtx/vvd files companion files to quell error.mdl server spam
+  + return power management enabling to sigint instead of just finish
+  + clear account specific tf client files if there are no steam procs in finish
+  + remove mat_managedtextures cvar from text/farm client command line
+  + return a failure instead of 'listen' for client connection if no information
+  + warn about steam cloud sync only after 5 seconds in logout
+  + fix losing display id in power management disable
+  + avoid a stall and improve farm helper
+
+[version 0.9010]
+  + fix farm load crash due to renamed resource file
+  + remove halloween map selection, server registration, and game logic
+
+[version 0.9009]
+  + split helper, common elements, and sourcemod plugin from main script file
+  + fix checking for share directory permissions when it doesn't exist
+  + now require a valid apikey, nodejs installation, npm, and git
+  + simplify wine/node dep check, and remove sudo/xwrapper/migration logic
+  + tighten variable interpretation for boolean 'yes' values
+  + mark display server procs to deduce ownership instead of display lock file
+  + remove x_display, and assume :0, with other farm session having no leading 0
+  + change creation display id to :99 and erase temporary manifest before login
+  + copy and use errant ssfn generated by steam instead of deleting it
+  + no longer have script change client fps and use only one idle_max variable
+  + remove conditional x server stop from logout and fix xdotool lock typo
+  + eschew non-node based variants of routines and related checks
+  + dont queue friend requests and instead fail if node login is unavailable
+  + remove display/wid gather in load for farm helper
+  + only start pulseaudio if needed after flite/aplay checks in helper prep
+  + fix drop deterge variable checks in farm and remove cl_trigger from acmd
+  + have drop sound variable enabled by default and check for aplay
+  + fix x server pgrep sorting in status
+  + only run temp files deletion routine at script end instead of also in sigint
+  + skip unnecessary removal of steamgui lock at sigint
+  + have sourcemod plugin stop server when empty instead of handling in script
+  + only run x/pm/stty finish routine at script end instead of also start
+  + remove disconnect calls in stop
+  + wait for node to exit if sending a local term signal and print sigterm
+  + improve farm helper and reorient to multiple drops without accepting
+  + include sample conf with variable details transplanted from readme, now help
+  + adjust deps, merge installation/sharing, and elaborate on config in readme
+
+[version 0.9008]
+  + don't have the ui client verify extracts nor wait for manifest in login
+  + show ui package download output through error stream
+  + re-extract ui content if the client manifest is removed
+  + protect erasing depot/app cache and music directories in ui extraction
+  + wait for wineserver to exit from a previous session during a (re)login
+  + hide missing file error for tf2 client acf stateflag sed
+  + fix force_aniso high cvar typo and use widescreen resolution for high client
+  + remove steamvr logic as it is now longer a required bundle for tf2
+  + fix error when checking non-existant size-on-disk from an app manifest
+  + show size on disk of tf2 app when preparing farm client
+
+[version 0.9007]
+  + move common functions to a separate load file to share with helper
+  + don't exclude dgbhelp.dll to resolve crashing on certain systems
+  + neglect vrclient+icudt.dll and steamwebhelper instead of libcef/chromehtml
+  + use winedebug setting if debug env variable is set and require xdpyinfo
+  + apply wine staging shared-memory environmental variable
+  + fail and exit if the script file has no 'pdl-idler' prefix
+  + require ip/lspci, depend on gcc for vunzip compile, and find alt node binary
+  + include xwininfo and xprop into the dependency check
+  + reinclude support for sudo command alterations and improve xwrapper check
+  + migrate/rearrange shared data and account files from cred to share directory
+  + move deletion of hlextract,launcher,xpid/x11vnc,etc files to migration
+  + delete existent files before download, try 3 times, and handle redirects
+  + don't check gist for updated version if script is renamed and do less often
+  + adapt gist download and extraction for new zip file format
+  + remove background sleep on gist download and always announce it
+  + ensure deletion of gist download tarball if it wasn't during the check
+  + reference window with id not name and store the previously gathered wid
+  + support toggle between read/sleep for pause when running background routines
+  + ensure correct pid/return value when waiting on a lock file
+  + skip redundant hl2 pid check and cache client connection status
+  + support up to 99 srcds or xvfb instances with corresponding variables
+  + mark cl con to test cmd ability and slow/lengthen timeout loop with time fix
+  + collate totals of relevant steam web helpers when calculating steam memory
+  + pause to ensure new hl2 proc went defunct and to allow for final srcds irc
+  + use default fps marker without separate file and fix an error on disconnect
+  + end fake only if no invocator in stop and fix content state check
+  + halt the stop wait at 10 seconds with process kill
+  + pause for moment after window focus and target by wid not name when closing
+  + look for unmapped window state along with withdrawn in close_window
+  + install steam ui in drive c no program files with chmod adjust now in delete
+  + reference correct file for the connect hash when the prefix is uninstalled
+  + share/link steam config/userdata dir and eschew cred backup in logout/global
+  + track existence/pid and protect X server stop/start via display block file
+  + fix vnc pid check and wait for wineserver end in X stop with faster pause
+  + change/hide farm helper script file and delete new xdotool lock in x stop
+  + erase config/htmlcache in not-high logout and login
+  + show X id in logout message and close error windows when logging out normal
+  + just close subscriber window in logout for the initial config restart
+  + remove 5 sec delay on check for the cloud/download shutdown window in logout
+  + handle stalled client stop and use stderr for kill warning in logout
+  + no longer track/use host files or employ their relevant checks
+  + fix potential bad lcfg modification in logout/sigint with avatars variable
+  + allow main X server to be stopped in logout when called from sigint
+  + prune tf2/friend files in logout not uninstall along with utility script
+  + don't have logout end node background sessions that aren't enter/fake
+  + fail on short usernames and collate all relevant files in account size
+  + move and link steam logs directory to share/account/logs/host
+  + warn if 8 seconds have elapsed after when waiting for wineserver to finish
+  + rely on logout call regardless of wineprefix presence in uninstall
+  + remove appcache acct stats in uninstall and fix wine-staging ver detection
+  + change x11vnc passwd file name and remove noxdamage parameter from startup
+  + fail if the display server doesnt successfully start
+  + don't attempt yes or output redirection with ssh-copy-id in x11vnc start
+  + show x/xvfb server pid in x11vnc start output message
+  + avoid steam pid check on some install calls and reset proper create display
+  + bump prefix ver to 8 and ignore prefix location change
+  + share depot/appcache/vr locally within steamgui to fix vr redownloading
+  + consider wine-staging when checking wine.inf and other system files
+  + backup registry file for cloning to other accounts for creation or low login
+  + create and or use links for each account wine prefix/registry and steam data
+  + disable steam music folder crawl option of config.vdf in install
+  + show various warning error messages in stderr output stream for validate
+  + block/download/extract/link/touch client ui data manually before install
+  + run wineboot instead of regedit to create/prep data and do only if needed
+  + copy and use default steam skin without notifications for farm logins
+  + no longer use timestamp files in the prefix for the install/friends delay
+  + cancel wine gecko installer prompt if it arrives in prefix prep
+  + make prefix documents directory and link companions to it in install
+  + recreate lcfg entirely in login (not install) for initial restart/creation
+  + prefer shared ssfn over errant on conflict and remove clutch in install
+  + reset tf2 app stateflag from 1030 to 6 before login to handle a crash
+  + use rawinput, motionblur, 8x aa/af, and disable vsync for high mode clients
+  + set default client class cvar to scout and do similar with sourcemod plugin
+  + disable tf_taunt_always_show_hint client cvar and adjust to mode in login
+  + truncate steam server address representation in authenticated output message
+  + unify most key/input/mouse xdotool calls under optimized wrapper funcs
+  + rely on script variable instead of passwd script presence for the end echo
+  + move email routine into its own action simplified with a click not keys
+  + ignore error, retry 4x, fix empty bp read, and skip profile in tf2b download
+  + implement exhibit to relax acct inventory and/or comment privacy settings
+  + simplify explorer pid check and don't use pid in each prefix
+  + no longer halt node fake sessions in login start and use error stream more
+  + properly fail for the entire action if there is not enough swap in install
+  + always neglect crashhandler.dll for high-mode logins and mark normal logins
+  + set wine version 1.7.38 as the minimum required to support the game overlay
+  + change port ranges for client/listen and mark steam process for coordination
+  + print error and logout if a preset password entry fails 3 times in login
+  + bump/recreate app manifests for tf2/steamvr to fix empty location bug
+  + reset from create display at login loop lcfg prep instead of config restart
+  + relax cloud settings/permissions now blocking only tf2 config.cfg
+  + improve login cfg handling with ss key, broadcast disable, and high jumplist
+  + download image and embed a steam client screenshot entry before ready login
+  + fix farm var and jumplist/dupe streaming in lcfg and hide block notification
+  + move nopreload/nopreloadmodelscmdline switches to only farm client
+  + get explorer pid at login finish instead of locking and tracking ps
+  + regedit if needed with csmt/font/sb/audio keys and fix some tampers
+  + erase dumps directory and all log txt files before steam client init
+  + show 3 digits of ssfn/cred in init message not auth and use console always
+  + retry offline login after a minute and close window instead of kill
+  + mark authenticated output message if password was inputted with truncated ip
+  + close error window instead of just hitting return in login password entry
+  + delay for creation network/password check to wait for the steam client
+  + catch and restart on io operation stall in account creation
+  + remove new creation anonymous userdata and change ui message to a warning
+  + watch for client ui manifest extraction and relink in login if needed
+  + fix ssa window stall and skip mouse/alt+f4 for closing guard location window
+  + run register and exhibit actions after creation but before changing display
+  + check/show for time spent on auth reconnect and errant ssfns in login msg
+  + don't needlessly call regedit to modify hl2 settings in login finish
+  + preempt steamvr download with stall before login finish
+  + show prefix size, short hash, and pid in login output message
+  + fix urls with multiple slashes and only try default X display in website
+  + increment the xdg-open delay for each account in website
+  + support echo to chatroom from log writes in node enter
+  + build node modules inside of steamnode directory to prevent an npm error
+  + fix deletion of /tmp/npm directories, npm-debug.log, and previous version
+  + manually install/use ref module as it is not implicitly used in node-steam
+  + upgrade node-steam to 0.6.8 and steam-trade to 0.2.4 with improved ver check
+  + mark script pid in node js and hide future output when it breaks from shell
+  + pause for the updated node servers file download before exiting a node login
+  + warn and relogin/retry/continue for some node actions that timeout/fail
+  + better handle a transient node relogin due to connectivity issues
+  + utilize new chat event in node-steam instead of a timeout on a join failure
+  + error/fail when trying to fake while running another node action/steam app
+  + fix fake returning a failure when already on the same appid
+  + disable PM on a node login break with new xfconf/restart procedure for xfce
+  + use just wget and apikey instead of node script pipe for friend+online check
+  + employ local friends/online checks in trade prep if the steam pid is present
+  + cache creds, fix file/pid/timing/window_close/queue/suffixed-acct in friend
+  + assume default display and pause after running alternative pager in log
+  + use proc list instead of checking each port in server log page
+  + implement socialize action that completes community tasks and/or votes
+  + enforce minimum random dictionary word length of 6 characters
+  + adjust to new string in content log and fix app download size reading
+  + don't run pre-load hl2 regedit unless needed and not in the background
+  + switch to vpk binary instead of external hlextract program
+  + bump farm resources to version B with a heavily-reduced set of scripts/ui
+  + use links to handle cfg files now being read only from the mod gameinfo path
+  + improve wait/check loop in load and include farm files for gun mettle update
+  + show tf2 versions in client/server farm resource construction messages
+  + mark output if tf2 was readied with count of farm constructions
+  + include discard/passtime panel and extract gameui txt files in construction
+  + symlink items_game.txt and the signature file into farm resources
+  + extract and arrange item drop/pickup sound files for farm drop logger
+  + increase size of client ui crafting status dialog close button
+  + mark item discard panel arrival in client log to deduce a full bp in farm
+  + delay writing farm construction version file until successful cl/sv launch
+  + properly target the error windows and mark/close available window in load
+  + turn steam vr wait message into a marker on loading output
+  + check for micro validates and don't build farm resources if no dl in load
+  + exit and fail if the d3d error shows in load due to damaged prefix/registry
+  + warn then consume another login by overriding error window in load
+  + fix cloud conflict/warning window targeting and bypass in load
+  + close updating and/or ready window after dl is done in load and mark output
+  + skip regedit in load finish and ensure reset/return of alias.cfg on failure
+  + mark hl2 window id and display in wid file for reference by farm drop logger
+  + show disk size of tf2 app in client preparing messages instead of license
+  + read the correct server app download size and show size and port in check
+  + show action time in all connect messages instead of just for farm
+  + fix server availability check and farm clients not restarting in connect
+  + start cl before sv in connect to ensure vpk and no longer keep server logs
+  + institute server resource bump following the client's and use empty precache
+  + upgrade to sourcemod 1.7.3git5258 and metamod 1.10.6 and retain basecommands
+  + revert default server to irc.freenode.net and fix duplicate channel section
+  + show tf2b uid link in sourceirc connection/disconnection/status messages
+  + protect sourceirc.cfg file with file permissions in connect
+  + include item event and relay activity in farm server plugin for drop logger
+  + improve event map deduction, mark account, and skip server identity if f2p
+  + reuse existing game server account identity in event registration
+  + apply ignoresigint srcds switch to block errant ctrl-c in the screen session
+  + use 0 for sv mp_allowspectators/team_unbalance_limit and show map in output
+  + only check hl2 once for noshaderapi flag in connect and truncate ip output
+  + fix not waiting for a map load in non farm client connect to a pdl server
+  + better handle challenge/mismatch/full/ban/password and exit on vac failure
+  + check/fail if local steam client is running an app before a node game action
+  + handle private bp failure in node backpack retrieval
+  + collate all crate defindexes into one recognized tag for item modifications
+  + show various available/max counts in node item modification output messages
+  + start pulseaudio for drop logger if the default alsa device points to it
+  + deterge before farm if free bp spaces are less than drop_deterge variable
+  + don't start extra farm helper, change bg to #3a342e, and remove schema wait
+  + move notification trigger into slower acmd and remove noaudio switch in farm
+  + remove the wine processes from pulseaudio client list after farm load
+  + implement sound/tts/irc/chat drop logger in helper with other improvements
+  + use one helper for all displays and delete junk files on migrate not finish
+  + don't differentiate items from crates in list output
+  + show padded prefix disk usage in list instead of status and truncate uid
+  + just reference cached version of steam ui and skip download in list
+  + add flag for separate node login state in list and move pci.ids to share
+  + hide dns error, remove lsof/profile download/group name, and level in status
+  + show pid instead of helper count in status and sort xvfb/srcds listings
+  + read ps for srcds/X instead of trying 0-9 and fix vnc+llvm+dns in status
+  + detail left aligned pid+usage for wineserver+explorer+services in status
+  + fix parameter spaces and not using it when steam is not running in utility
+  + fix failure returns and parsing of node receiver account with '@' characters
+  + fail or warn about trade block with cred file mark and/or handle in session
+  + fix check for both left/disconnect status codes in node chat state change
+  + include steam game gifts in trade, unless nosg flag is present
+  + fix incorrect timing out on uid targeting sender accounts in trade
+  + check online first, properly reset account, and fix refake in trade/harvest
+  + don't warn when the last trade target leaves the chatroom
+  + use explicit warning for trade error 22 when a sender cannot trade
+  + carry over truncated trades to subsequent exchanges in the same node login
+  + retry node trade sessions within the same login if they don't complete
+  + fix receiver syntax error and increase trade send exit timeout from 10 to 32
+  + increase trade item add timeout from 60 to 80 seconds and fix harvest fail
+  + explicitly leave chat after finishing trade and remove pdl.conf mv clutch
+  + allow user to specify/negate account index/group ranges in invocation input
+  + fail and exit if account index/group/range input is invalid and harden logic
+  + skip global init start/end operations for an invalid action
+  + perform deletion of temporary files/dirs for sigint as well as global end
+  + sigint once, attempt just logout, show acct, and use stty there and finish
+  + fail with return code 2 for assisting in canceling looping invocations
+  + use proc list instead of checking each port in finish server stop and x stop
+  + look for crashdialog not listen to count hl2 procs and show xfce pm version
+  + run finish (without in progress logout) before and after main action loop
+  + fix initial display deduction and condense multiple underscores in arguments
+  + only select active accounts with relogin and improve global receiver stop
+  + move friend invite queue process to after the main action loop
+  + remove unneeded steamcmd/dumps/vnc directories after main loop not finish
+
+[version 0.9006]
+  + bump prefix version to 7
+  + fix launch options config injection failure
+  + disable streaming client in initial config injection
+
+[version 0.9005]
+  + skip unneeded mouse interactions when closing certain windows
+  + suppress separate input prompts for x11vnc ssh keygen
+  + revert skipping of regedit/wineprefix prep in install
+  + disable family sharing notifications in initial steam client config inject
+  + fix setting other apps' launch options to those of tf2
+  + remove unnecessary 0.5 second wait in e-mail registration request routine
+  + check for empty steam server list in node login prep
+  + fix sigint handling for node logins and mark position in action timeout
+  + rely on error window instead of licenses for ui chat permission check
+  + fix parsing empty account password suffixes
+  + set x root background to gray after logging in a farm account
+  + fix responding to friend chat events other than a message in node fake log
+  + fix trade input string for receivers with a supplied password
+  + transform account indexes entered with the receiver input prompt
+  + fix clearing receiver variable after error if it was targeted as a sender
+  + abort trade for all accounts if the receiver password is invalid or failed
+  + remove broken local symlinks to cred host files on init
+  + fix error, warn, and remove lone '+' characters from account selection
+
+[version 0.9004]
+  + truncate path from script name reference
+  + harden node dependencies with npm, git, and nodejs-legacy/binary checks
+  + force a gist update check if environmental variable is set
+  + close empty server if client was stopped with a kill instead of normally
+  + show hostname in node background stop if applicable
+  + fix client game unavailable error/retry and adjust close window error hiding
+  + don't attempt to backup creds without uid and protect cred file with chmod
+  + close create and/or steam window in logout and hide errors if no localconfig
+  + supply variables for password and ssh tunnel handling with x11vnc
+  + disallow 'steam/valve' in name when creating an account and use display :9
+  + only run main regedit in install if the prefix needs to be prepped
+  + retain some settings and the textures vpk for a farm debug parameter
+  + fix errant regedit prep stall/cancel in install
+  + institute steam launcher download bump at version A
+  + hide dd output in ssfn generation and use default cred/ssfn if present
+  + reset client gameinfo on login if there is no lock on the file
+  + retry account creation once or fail for weak password or server block
+  + fix stalling after ui extract when creating multiple accounts
+  + use uid instead of dir checks in login userdata config and create test
+  + show first 3 digits of ssfn sha1 hash in authenticated output message
+  + mark create stages in output and watch connection log before password entry
+  + fix email removal sed from wiping the whole conf file in account creation
+  + stop subscriber agreement bypass from continuously running
+  + increase speed of email confirmation request routine
+  + fix old acct conflict switch in trade for accounts with conf passwords
+  + use marker file when stopping xfce4-pm so as to know to restart it
+  + hide gameinfo error on initial server start
+  + upgrade sourcemod to 1.6.0-hg4359
+  + only show finish message in validate if it is successful
+  + improve gpu deduction with amd dominant over i915 and use vnc status flag
+  + hide pass from node script and permit background paging with _ prefix in log
+  + include output of screen -ls in report data
+  + set node fake game clients to the busy persona state and log friend messages
+  + replace steam/valve strings in node rename selection with 'pdl'
+  + perform node backpack error handling with error event instead of try/catch
+  + change common crate item defindexes to those of the supply munitions
+  + don't wait for pid when restarting the power manager
+  + improve account targeting with conf-less indexes and invalid number checks
+  + add node dependencies, new variables, and new parameter info to readme
+
+[version 0.9003]
+  + fix ssfn file entry config.vdf sed
+
+[version 0.9002]
+  + fix node installation assumption in many places
+  + migrate errant ssfn files generated by the steam client before login
+  + fix random ssfn file generation
+  + fix exit_timeout node typo in trade
+
+[version 0.9001]
+  + allow renamed scripts and show filename in status+usage
+  + keep winedebug disabled for high-mode and add default chatroom variable
+  + update gist cache timestamp even if the download failed and hide that error
+  + use proper read line program for install/create/command input prompts
+  + fix false command errors due to timeout not resetting on a each command
+  + don't show empty pid if ending a node session running on another host
+  + silence errant xprop/xwininfo error output from close_window
+  + don't use alt+f4 when closing friend invite window
+  + backup/restore authorized device ccfg section with cred file
+  + stop background node sessions in logout
+  + look for high-acct files in cred instead of the idler root
+  + make steamappdata.vdf before every login not just the initial install
+  + recreate ssfn file to the correct size and dirty cred hash
+  + change to default of 300 fps for high clients and move personal.cfg to cred
+  + don't reinstall on second offline error and just wait 4 minutes before retry
+  + warn about broken overlay pending a future wine bug fix update
+  + provide aload alias instead of starting manual play-mode reoccurring aliases
+  + relax cloud restrictions on 760, 7/serverbrowser, and 440/item_clientacks
+  + remove write access to sharedconfig.vdf after (re)creating it
+  + check steam client url handling ability before restarting for initial config
+  + accept 2/busy+3/away+5/trade+6/play parameters to online and show in list
+  + delete steam client cred host marker files in node login if they exist
+  + lurk and log chatrooms with node if not using the steam client in enter/exit
+  + harden lcfg steam uid gather for when there are multiple accounts listed
+  + accept optional '/?' suffix to stm_com website parameter and fix tf2b
+  + check friendship status via uid with node and improve account selection
+  + send friend invites with node if steam isnt running and allow uid/index add
+  + revert farm vpk packaging to reclaim some hl2 memory and fix mismatch error
+  + fix steamcmd validate variable and improve watch loop with state/download kb
+  + fail on sourcemod plugin compilation and show output
+  + improve and delay ~/Steam restoration until after server has started
+  + extract scripts/tf_weapon* for server resources to fix non-farm client crash
+  + upgrade sourcemod to 1.6.0-hg4304
+  + enable sourcemod logging if debug environmental variable is set
+  + show client connection duration in sourceirc and idler plugin output
+  + verify srcds content and connect to server in validate skipping schema check
+  + change dashes to underscores in fake parameter input
+  + delay writing node schema url marker file until it downloads
+  + fix not crafting a single weapon pair and slow craft/waste delay to 200
+  + delimit combined craft/waste parameters with a ':' in deterge arg string
+  + implement trade action with defindex selection/negation and uid send
+  + use harvest action to deterge and trade in one node login
+  + delete junk ~/Steam dir and empty/errant gist.tar.gz in finish clean
+  + don't fail if no pdl-idler.conf and break twice if node isn't installed
+  + logout steam if it's running on the host rather than fail before node action
+  + fix parameter and advanced account typos in readme and add new info/examples
+
+[version 0.9000]
+  + export LC_ALL to C at the start of the script
+  + only show gist check message if its been 4 seconds since the download start
+  + compare script versions numerically instead of just checking equality
+  + fix/improve window id targeting in close_window
+  + don't warn or dirty cred hash unless ssfn file was existent as well as empty
+  + harden initial client connection marker and use net_graph cvar for high mode
+  + remove obsolete empty config.vdf content markers from steam init message
+  + fix case sensitivity when checking app buildid and gameinfo complication
+  + clear steam cloud log before account login
+  + expose more warnings/errors to error output thereby showing them in validate
+  + move the pdl-idler.conf file into cred
+  + auto accept client subscriber agreement dialog in login
+  + open website in the first available display instead of the active one
+  + package client farm resources into a vpk file and use it as a version marker
+  + pad first empty decimal place in process usage output
+  + show first server console even if it is not running in log
+  + condense and improve report output data
+  + reset display variable export before starting steam in validate
+  + remove errant apostrophes from random words in rename
+  + delete the correct openvr directory and don't delete .screen in finish clean
+  + don't skip pausing in sleep action if there is a node background session
+  + fix default website parameter in readme and adjust conf locations
+
+[version 0.89]
+  + change gist update check frequency from 4 to 8 hours and fix typo
+  + improve client fps log marker
+  + fix non-empty guard keys not linking on reinstall
+  + pause after focus the guard window before entry
+  + focus then accept sporadic 'update available' steam window in load
+
+[version 0.88]
+  + announce when checking gist for updates
+  + return condebug use with separate gameinfo write directories for console.log
+  + remove normal arg from window check and use authentication instead in logout
+  + disable winemenubuilder in regedit and show launcher download before install
+  + default to high mode if the file 'high-${ACCT} exists in the idler root
+  + reset steam client ui dimensions before every login
+  + warn about new invalid empty ssfn files, fill them, and force password entry
+  + provide convience alias to kill reoccuring client comand loops
+  + randomize player logo spray selection if any exist in pre-login prep
+  + enable d3d9ex for high mode and remove obsolete explanationtradingpanel cvar
+  + add matchmaking_ticket_help + show_preset_explanation_in_loadout client cvar
+  + split checking/updating ui messages into checking + downloading with size
+  + retry once after a unknown steam login failure
+  + delay steam init message until wineserver restart and slow prefix wait loop
+  + don't warn about manifest bump if initial tf2 download is unfinished
+  + disable autoupdate for apps if they have a buildid before login
+  + retry, then reinstall, then keep retrying and waiting 10s on offline logins
+  + improve password prompt output echos and guard prompt input
+  + fix auth error reinstall not retrying with the same login flags
+  + change default selection in website from tf2b to stm_inv and increase pause
+  + don't alter gameinfo without buildid and show vr dl/size in load+validate
+  + use seperate gameinfo write dirs for srcds condebug files
+  + negate server tf2misc vpk and use extractions to greatly lower memory usage
+  + change default irc server from irc.freenode.net to chat.freenode.net
+  + revert server map to itemtest to avoid some new reoccuring console spam
+  + fix irc timeout stall and increase it by 10
+  + lower client schema timeout from 180 to 90 and accept gc message after 10
+  + fix node flag alignment in list
+  + accept "bin:" prefix to log parameter for selecting text viewer
+  + change 'cl' log parameter flag to 'tf' to avoid conflict with 'cloud'
+  + combine both node files into one call to less in log
+  + ensure logon operations are performed only once per node session
+  + switch from '-' to '_' delimiters in fake, waste, and craft actions
+  + have item_safety var block accounts in a spaced list from changing items
+  + use 100ms delay between sending each message to the gc in craft/waste
+  + fix looking for the incorrect node process when running a login script
+  + kill account if not logged in or waiting for cred entry in finish
+  + don't stop a server in finish if another invocation is running connect/farm
+  + delete empty /tmp/dumps + .screen dirs and old server console logs in clean
+  + adjust readme adding astop client alias and item_safety var descriptions
+
+[version 0.87]
+  + disallow the running of a renamed script
+  + print newline upon script cancellation on non-password input prompts
+  + check for optional node.js in dependency enforcement and deduce executable
+  + fix constant gist checks when using a symlink to the directory
+  + improve server playercount checks
+  + check host/pid, log age, or exit marker to deduce node login availability
+  + end node fake sessions if one is running in stop
+  + improve steam application state reading
+  + if present, close login window and wait for steam to end in logout
+  + fix window focus for farm sessions by adding mouse click inside window
+  + use return for close_window and hide syntax error for invalid x.pid files
+  + improve show avatars flag login deduction and fix manifest variable conflict
+  + fix sometimes not waiting for regedit/prefix prep completion in install
+  + remove old steamapps directory move call crutch in install
+  + download and adjust to new steam installer executable
+  + fix tf2 content manifest bump not prompting validate when there was no file
+  + bump content manifest file to version 2 and remove node script+log in delete
+  + stop a node background session before login and don't unset pass variable
+  + remove bootstrapper update handling in login
+  + pipe password input to xdotool (instead of passing it) to hide from ps list
+  + fix conf file being erased after creating an account and improve sed call
+  + slow e-mail confirmation request automation and remove gameinfo typo crutch
+  + simplify load by ignoring cancels and using app state/download size
+  + don't modify gameinfo if updating/validating and use correct newline format
+  + institute farm resource variable bump
+  + fix crash from typo in farm resource creation and remake on update/validate
+  + catch and notify about small tf2 updates after launching
+  + only wait on schema after loading farm clients and adjust output messages
+  + explicitly use bash for steamcmd fixing a crash if it is not the default
+  + fix halloween date check syntax error
+  + warn and proceed if server irc connection check times out after 20 seconds
+  + truncate ip-address in connection output message
+  + add node status check flag to list entries
+  + move global graphics device+vendor+name deduction to status
+  + replace sharedconfig flag in log with 'node' that pages script+log files
+  + remove obsolete regedit.reg file read in report
+  + implement validate action that uses one account to check client content
+  + have npm install the node-steam module to the pdl-idler root
+  + check ssfn and use $APIKEY environmental variable for node functionality
+  + prompt or use last password in node script and erase entry on login fail
+  + wait on node action completion before script prepping once until it is run
+  + stop and later resume a running background node if about to run an action
+  + construct node script with logic/action interchange before execution
+  + implement background fake, rename, waste, craft, sort, and deterge actions
+  + if canceling, logout/kill the current account if it has not fully logged in
+  + delete obsolete steam msi installer and old openvr directory in finish clean
+  + show timestamp and current running action in sigint output message
+  + echo newline to canceled password prompts
+  + fix grep error for pdl-idler.conf passwords for block/index referencing
+  + simplify log sigint handling
+  + add node dep+credit, api key, new action descriptions, and example to readme
+
+[version 0.86]
+  + fix for gameinfo typo and malformed update
+
+[version 0.85]
+  + truncate output messages from the left if the terminal width is insufficient
+  + require wine>=1.7.8, list only normal crates, and don't hide pause output
+  + return to one-pass client commands when client was loaded from the script
+  + remove all ensured pauses based from login time
+  + use one farm helper per display and remove its script when stopping X
+  + wait until script finish to shutdown the main X server
+  + remove account-specific client write directory on logout
+  + toggle registry value instead of deleting the drivers\audio key
+  + run regedit in the background and wait for completion in install or finish
+  + remove email address from conf file after account creation, not install
+  + adjust default steam library window height and exit if cred is unwriteable
+  + bump manifest to m1 with auto update disabled and warn about validation
+  + delete temp directory when cleaning tf2 download cache
+  + write static client configs in cfg directory instead of linking from root
+  + (re)add dummy ip ban for one-pass client commands in autoexec
+  + remove jump/duck/item binds, adjust sensitivity, and use mat_vsync in high
+  + enable sprays for all clients and add useful gameplay cvars
+  + fail and logout after 3 minutes if password or guard code is not inputted
+  + disable only winemenubuilder.exe and dwrite.dll for high mode logins
+  + retry offline after 8 seconds without any action
+  + don't prompt for install/create if a password is supplied
+  + show config.vdf tf2 content indicator flags in login initiate output message
+  + use avatar steam client setting launch toggle to pinpoint login finish
+  + fix ingame overlay shortcut key
+  + hide potential error output when checking for the servers window in login
+  + use pause instead of xdotool delay and separate key presses in create
+  + use call to offline instead of just passing a steam url in login
+  + automate an e-mail confirmation request before login finish on a new account
+  + don't print error in create if a prefix exists but no email was specified
+  + hide xdg-open error output in website and shorten enter output message
+  + lock on and use gameinfo for account-specific client write directory in load
+  + remove loose gameinfo entry and link steam.inf+items_game.txt for farm load
+  + extract unlit generic shaders for debugging farm resources with a gui client
+  + fix syntax error on openvr download and remove 'commiting' update message
+  + wait 2 seconds then recheck before failing for assumed update cancel in load
+  + don't run client resource prep twice after an update in load
+  + upgrade sourcemod to 1.5.2
+  + remove 1.5 second sleep and use 2 more mouse clicks in farm helper
+  + show helper count instead of pid in status
+  + check for software rasterizer string in glxinfo for status
+  + fix utility parameter without steam
+  + don't disable vtex_dll.dll for client spray support
+  + delete singular helper script, root configs, and friends.cache when cleaning
+  + remove xvfb permission check and sudoers alteration
+  + exit if pdl-idler.conf exists but is not readable
+  + fix sourcing pdl-idler.conf from the present working directory when using sh
+  + reference pdl-idler.conf for account details when supplying just the name
+  + adjust wine dep + resource assumption and explain password storage in readme
+
+[version 0.84]
+  + revert to changing the pwd to before the shell check
+  + show minimum wine version required in output when current is insufficient
+  + use a bump file for forcing reset of application manifest and a validation
+  + don't increment error count in load if waiting on openvr
+  + check after updating window arrives in load and see if it is just validating
+  + fix having first client generate a server identity when not halloween
+  + record time elapsed since before farm starts to after the account connects
+  + show all new parts of the changelog on update, instead of just the latest
+  + increase update prompt timeout from 20 to 60 seconds
+  + fix stalling on non-existent gnome-pm start and check for xfce4-pm in lxde
+  + toggle sigint flag to fix log sequence interruption with ctrl-c
+
+[version 0.83]
+  + fix/improve content wait so that an update will not stall load
+  + announce if the finish window is due to a download after 5 seconds in logout
+  + check host cred file before doing anything else in login
+  + only enforce minimum password length of 8 if creating an account
+  + print script canceling message as error output
+
+[version 0.82]
+  + check shell before changing pwd and improve output print function
+  + use Xvfb for farm X regardless of driver and require at wine >= 1.7.1
+  + find and kill defunct hl2 processes before searching for others with -n flag
+  + allow the 'no' refresh parameter in list even if there is no cached data
+  + fix numbered directory grep syntax error in list and backpack
+  + remove tux item count handicap and silence pause standard output
+  + avoid syntax error and print 00mb when getting process memory if no pid
+  + use distinct timeout variables to fix various/sporadic conflicts and stalls
+  + slow client command loops and use timeout for the second portion
+  + comment the loaded alias in the client command file instead of removing it
+  + fix genuine items being listed as haunted in backpack
+  + add /sbin and /usr/sbin to the script path variable
+  + don't run backpack in disconnect from idle server
+  + wait for pid removal in stop+kill and defer content wait to load or logout
+  + print X server stop message as error output
+  + increase cloud sync warning check timeout from 3 to 6 in logout
+  + use symlink to cred host file in root to speed up stray backup check in main
+  + don't reset display id if retrying a login and unset that timeout in logout
+  + remove chvt call in X start along with sudo dep and simplify x11vnc check
+  + move pre-init/loop prep from login to install and fix/simplify host check
+  + add cl_autoreload/hud_fastswitch cvars and bind f to use_action_slot_item
+  + hide error output when linking common client config files in login
+  + retry an offline login once before exiting with a kill instead of waiting
+  + kill explorer after login if using the hide flag to deal with wine >= 1.7.6
+  + don't disable winedebug channels for high-mode logins
+  + reinstall if the steam crashes after auth 3 times and fail on the fourth
+  + mark login flags in a per-prefix file and reset content_log in login
+  + retry login if it stalls for a long time after authentication
+  + slow automatic form entry when creating an account
+  + change hung launch and extraction timeouts from 90 to 60 and 150 to 90
+  + restart login if ui check or download takes too long
+  + fix and improve retry/fail handling in login and show explorer pid at end
+  + allow passwords with a length of 6 if the prefix already exists
+  + ensure 2 seconds instead of 3 and retry after 8 elapse in enter/online
+  + adjust account specification parsing for passwords with '#' signs
+  + only show farm resource construction output message once
+  + use marker wav files to signify ui clicks of store error and helpful friend
+  + relogin if tf2 doesn't launch 3 times then fail on the fourth
+  + use halloween gift farming server plugin and map during the event period
+  + have server only park farm clients by default and use mp_autoteambalance 0
+  + base fps+map check on noshaderpi in connect and fail if client command does
+  + show output message before running client command in connect
+  + check for placeholder version mismatch error in connect for farm clients
+  + fail if hl2 goes defunct while loading the map
+  + skip executing join client file in connect if it already set to spectate
+  + don't prestart idle server in farm
+  + hide glxinfo error output and show proper server player limit in status
+  + show client config files along with the console in log
+  + only run finish once for multiple sigint interrupts and output a message
+  + disable openvr and sourcevr dlls for all processes
+  + fix email addresses with '+' signs being confused with account indexes
+  + abort the rest of an action chain if play or start fail
+  + adjust performance assumptions and Xvfb implications in readme
+
+[version 0.81]
+  + bump prefix version to 6 and show prefix size in rebuild+move output message
+  + mv tf client data and application manifest to new steamapps root directory
+  + hide xdotool error output in close_window
+  + prep application manifest for openvr tf2 client dependency
+  + execute personal client cfg file in autoexec and create it blank if needed
+  + catch error and wait for the initial openvr download in client load
+  + retry steamcmd if license fails and use separate download message
+
+[version 0.80]
+  + use '0' not '_' for empty item count in list and trim username if too long
+  + silence pause error output
+  + reset command read file after the client quit in stop
+  + warn after 3 seconds if visible cloud finish window arrives on logout
+  + ensure 3 seconds have elapsed since login before running logout
+  + fix using old display id when running relogin on a farm client
+  + disable dinput and dinput8 dlls for steam
+  + deactivate audio and serverbrowse/shaderapidx9/speex/stdshader dlls for farm
+  + delete only tf2 download cache on login, instead of all
+  + show display id in steam init output message
+  + remove '-norebuildaudio' to save space in launch options for long usernames
+  + check for viewable chat window and focus it before moving in enter
+  + alter gameinfo.txt and use slim vpk extractions to reduce farm hl2 ram usage
+  + add managedtextures/mipmaptextures/phong=0 mat cvars to text+farm startup
+  + don't restart farm clients in connect if assuming a parking idle server
+  + show server number in connect output message and fix idle server assumption
+  + fix session check in farm starting another X if re-farming on a full server
+  + add cheat-protected material/mem cvars to farm client startup cfg file
+  + change helper click pos for reduced ui and revert display id in start output
+  + check/download and use pci.ids file in status, instead of main
+  + fix distro report in status and change 'noshaderapi' to 'farm' in hl2 output
+  + only logout on script upgrade if the new version requires it
+  + disable dxgi.dll, mss32.dll, and various other dlls for all processes
+  + fix non-empty servers sometimes stopping in finish
+  + don't attempt unnecessary deletion of steam cache home directory in finish
+  + leave now separate ui resource files and clean the old location in finish
+  + fix power managers not starting on the main display id and stalling finish
+
+[version 0.79]
+  + default to Xvfb as the farm X server type when using the fglrx driver
+  + check script update after function declarations, so as to logout for upgrade
+  + count fall 2013 crates and pad single-digit item counts with a '_' in list
+  + stop servers by sending "quit" to screen instead of using a command alias
+  + improve client fps detection and changing
+  + only write bp to log or shutdown server on disconnect if it is on the host
+  + show server number and playercount if disconnecting from an idle server
+  + don't start x11vnc when needed by default and limit idle_max variable to 32
+  + remove obsolete registry graphics settings and pass login mode to install
+  + don't disable hl2 html dlls and direct3d registry settings for high logins
+  + update prefix timestamp after each prep instead of the launcher install
+  + prep for creation in install if '/password#email' suffix an account target
+  + fail on login if there is less than 400MB of swap space and improve reading
+  + fix courtesy sleep not happening on cred file host conflict
+  + end cred prompt if a certain window shows or if steam stops or authenticates
+  + store temporary password entry scripts in the pwd, instead of each prefix
+  + alter output in the prompt to install to indicate a creation
+  + prep steam files before client and rename mic ping file to 'audible.cfg'
+  + include convience binds, sensitivity 4, and hide player model hud dialog
+  + reinclude binds and cfg file containing client movement aliases
+  + don't reduce cvars and use html, 200fps, and multicore for high mode clients
+  + enable msi.dll, dxlevel 95, and 1024x768 resolution for high mode logins
+  + change ingame overlay shortcut key from Shift to Control
+  + force steam language to english with command line parameter
+  + show steam memory usage in offline login end output message
+  + unset stored password and improve guard window focus/check on authentication
+  + prompt for and manage guard code input and adjust/improve password entry
+  + attempt a password entry if it suffixes an account with a preceding '/'
+  + improve creation, fail+delete if e-mail is used, and show secret question
+  + bypass steam guard location awareness dialog
+  + fail if any of the account input segments are invalid
+  + improve and simplify create prompt
+  + ensure 3 seconds have elapsed since login before running online/enter
+  + fix display id not being properly set before running an action
+  + warn then bypass the cloud warning/conflict dialogs in client load
+  + fix login mode parameter not being passed through play/start
+  + improve total swap space reading
+  + no longer erase the entire srcds directory when installing steamcmd
+  + improve steamcmd cache directory shuffling
+  + fix duplication of server log files
+  + reduce irc relay spam, bumb version, and remove server command read alias
+  + use correct limit for server player count in connect output, if on the host
+  + deduce display id after logging out a normal session, starting X in login
+  + quicken status cpu check and show display id in helper start output message
+  + show distro, user, script version, helper pid, and badge level in status
+  + elaborate usage line
+  + print most recent changelog section before script upgrade prompt
+  + set the permissions of pdl-idler.conf to allow only the running user to read
+  + trap sigint and perform finishing operations if the signal is caught
+  + delete password entry scripts and obsolete files on exit
+  + fix reconnect and reinstall actions not being seen as valid
+  + enforce all account target names to be lowercase
+  + note new high login capabilites and cred entry methods, and adjust readme
+
+[version 0.78]
+  + simplify X server checks, re-hide pid file, and allow type variable override
+  + require glxinfo for llvm version check in status
+  + properly handle tf2b and steamcommunity host errors when downloading data
+  + pad single digit memory values in output with a leading zero
+  + fix cmd timeout variable conflict when disconnecting and stopping
+  + get server memory, playercount, and running version via their port numbers
+  + try to stop a server with the quit command instead of just killing it
+  + show number, not version, in output message when stopping empty idle servers
+  + stop or kill the idle server if it is empty right after a client disconnects
+  + check connection port instead of map for the idle server check in disconnect
+  + echo quit to the command file instead of using cmd() when stopping a client
+  + use X lock files in tmp to check pid instead of using pgrep
+  + use proc display marks in X shutdown now checking pid file for farm
+  + stop the X server if it is empty right after an account logs out
+  + don't restore the VT when starting the main X server
+  + use shell variable for the maximum number of logins with X and the server
+  + show steam cid or 'nostmcmd' in launcher installation output message
+  + fail in login if the maximum number of logins are used in the main X server
+  + re-add 'cl_showbackpackrarities 1' to autoexec.cfg
+  + allow services and steamserver.exe/dll to run for high-mode logins
+  + enable cloud filesystem access to 'userdata/760' for high-mode logins
+  + mark display id on wineserver, steam, and hl2 processes for farm sessions
+  + base client listen port start on the display id starting at 28201
+  + reset the login hang timer on ui extraction
+  + revert pid check removal and fix hang retry's interpretation as login cancel
+  + export the display variable to that of the account if it is running
+  + shorten premium tf2 license name in output to 'prem'
+  + write running cl/sv versions to console for comparison with download cache
+  + use '&' as a prefix for the item schema, and '@' for all process ids
+  + fix syntax error with preparation timeout in client load
+  + set server hostname to include user, time, ram, and swap information
+  + deduce first open server/port before starting/connecting to an idle server
+  + show message and pid when resuming the server content check/update
+  + use separate console log files for each server process with '+con_logfile'
+  + support sourceirc install bumps and remove itembot and unused stock plugins
+  + use hostname and the server number seperated by a dash as the irc relay name
+  + show number in server load output message and pid in schema output message
+  + add and start server command file read poll alias
+  + use shell variable for the idle server map
+  + apply replay parameter on the server to gain the extra player slot
+  + wait for map cfg file exec instead of steam connection when starting server
+  + fail if the client/server versions mismatch in connect, then stop if farming
+  + start another X/Xvfb server if there were already 32 wineservers in farm
+  + observe hl2 display process marker in helper and combine/slow xdotool calls
+  + pad process usage output percentages with a leading 0 if needed
+  + count running processes and open files in status
+  + show X version and detail running X servers in status
+  + detail multiple servers in status without now irretrievable uid
+  + add running client version to hl2 status information
+  + page consoles files of all running servers in log
+  + implement report action to collate system/process info and logs into a file
+  + aquire sudo credentials explicitly beforehand instead of with the tee call
+  + check farm hl2 processes, not steam, when undoing client ui modifications
+  + start power manager in the background and wait before printing output
+  + remove client limit, and detail report and new dep/variables in readme
+
+[version 0.77]
+  + don't run various calls to echo that needlessly encapsulate other output
+  + explicitly return true in pause()
+  + show steam/hl2 pid in various output messages
+  + pass the kill parameter from uninstall/delete to their calls to logout
+  + fix delete removing files from similarly named accounts
+  + hide error output in window raise/focus and successful login window unmap
+  + have client echo starting log marker after running alias.cfg, not before
+  + remove nice and ionice priority reductions from low/farm wine processes
+  + show steam pid on authentication output message
+  + mark ui version file upon extraction, not authentication
+  + improve/fix password prompt, and check for a connection warning dialog
+  + only check error window if steam is up and avoid extra pid check in login
+  + timeout and retry client launch after 10 seconds if nothing happens
+  + ensure 5 seconds had elapsed since login before preparing the client
+  + show client version in schema output message, not loading
+  + exit if steamcmd fails to receive license on server content check
+  + create/link server console log immediately after steamcmd update
+  + upgrade sourcemod to 1.5.1
+  + start client notification trigger in alias.cfg instead of as a call to cmd()
+  + remove 'low' command line parameter from farm client startup
+  + wait 1.5 seconds instead of 0.5 when calculating total cpu usage in status
+  + fix indentations in status
+  + combine X server and x11vnc stop output messages
+  + move check to resume power management to after any potential X server stops
+  + adjust memory assumptions in readme
+
+[version 0.76]
+  + check shell before declaring functions and restart with bash if needed
+  + change parentheses to brackets in output message markers
+  + fail if the present working directory is not writable
+  + move dependency check to before the gist update check
+  + simplify steam/hl2 pid checks
+  + add viewable flag to get_window_id()
+  + handle private bp and fix output error with uninitiated accounts in list
+  + use a dash instead of an underscore in cred host marker files
+  + delete webcache and fix output error in delete
+  + use Xvfb server instead of X for farming if the driver isn't nvidia or flgrx
+  + start an x11vnc instance along with the Xvfb server for farming
+  + rename registry file to registry.reg and don't hide or delete it
+  + raise windows before focus when they can't be activated
+  + focus window before new mouse click, and the escape press in close_window()
+  + combine appropriate xdotool calls in raise+focus, close window and helper
+  + move cred host check and insertion to before client file creation
+  + sleep for 5 seconds if the cred file appears to be claimed by another host
+  + rename 'pdl-idler.cfg' to 'autoexec.cfg'
+  + provide a supplementary prompt on the shell for the user password if needed
+  + delete 5 digit anonymous id userdata directories as well as those with 6
+  + go offline but don't check the result when ensuring initial offline state
+  + alter sourceirc download to allow upgrade/reinstall without a sourcemod bump
+  + truncate irc name to prevent them from being too long for gameinfo/status
+  + don't add chvt sudoers entry or use it in farm for hosts that use Xvfb
+  + change sleep period before chvt switch from 5 seconds to 8
+  + improve status output and device id deduction for vmware/virtualbox adapters
+  + move uninstall/reinstall/delete to the end of usage/readme
+  + clear the sudo password cache before alterting any permissions
+  + ensure Xvfb is an entry in sudoers for hosts that use it
+  + show version in pci id download message and assume nvidia driver over i915
+  + downgrade fatal missing input errors to warnings
+  + revert to a switch instead of if/else for the main action loop
+  + add support section to readme and note potential Xvfb dependency
+
+[version 0.75]
+  + improve file downloading and failure
+  + show incompatible shell in fatal output message
+  + have the script restart itself automatically after update
+  + save copy of steam uid in cred file for use with uninstalled prefixes
+  + fail in version checks if there is no installed component
+  + compare ui version to steam cdn manifest in list and extraction
+  + really fix list 'no/yes' parameter
+  + store cached web data as hidden files in 'cred' instead of in each prefix
+  + elaborate crate count, use full uid, and remove bootstrapper version in list
+  + detail uninstalled prefixes in list
+  + use builtin silent read calls with a timeout instead of the external sleep
+  + explicitly return true if the client console command succeeded
+  + fix fps change/detection when setting it ingame
+  + slow client command file read alias to 4 times the fps instead of 2
+  + remove idler_kill and instead check for 'yes' parameters to logout/stop
+  + show prefix version and size in delete output message
+  + fix X server process check
+  + improve steam account community id deduction
+  + show both memory usages in online/offline/enter/exit output messages
+  + change 'clientport' cvar to 28001
+  + set 'cl_hud_playerclass_use_playermodel' cvar to 0
+  + integrate 'pdl-idler.cfg' file into the script
+  + disable filesystem access to the 'userdata/760' directory for steam cloud
+  + change client listen server port start to 28101
+  + remove old ui version v1370553818 download retry workaround
+  + maybe fix steam hang retry and warn then retry if steam crashes post auth
+  + show chat room id in enter output message
+  + don't sync the xdotool windowmove call in enter
+  + implement friend action that sends or queues invites between accounts
+  + show memory usage in join/spectate output messages
+  + change dedicated server port from 27014 to 28201
+  + upgrade to metamod-1.10.0 and sourcemod 1.5.0
+  + remove dashes from irc names to fix gameinfo/status
+  + assume the specified server on 28201 is a pdl dedicated in connect
+  + if there is a visible login window, have farm helper pause and raise it
+  + remove useless one second sleep in farm helper
+  + replace 'view' with a 'log' action to page client/server and other files
+  + print usage text and skip other actions if 'help/usage' is specified
+  + only attempt to run enter once if the specified chatroom id is invalid
+  + check and respond to friend queue for active accounts after running actions
+  + add friend text, perf summary, shared cred tip, and adjust readme/usage
+
+[version 0.74]
+  + allow 'no' parameter in list to skip tf2b pull
+  + hide error if there was no cred host marker file to delete in logout
+  + improve X server startup/shutdown with support for separate farm display
+  + fix connect location/prefix location variable name conflict
+  + don't set steam ui mode to mini in install to fix the temporary scrambled ui
+  + change client resolution from 800x600 to 640x480
+  + mark farm client/steam processes
+  + restart wineserver without debugging after prep with farm marker if needed
+  + sync the xdotool windowunmap and windowmove calls
+  + increase ui extraction hang timeout from 60 to 150
+  + have create function fail if it couldn't log in
+  + download and use hllib to extract files from vpk files
+  + add load() parameter to extract and alter client ui assisting farm helper
+  + return 'noschema' if client might not have recieved item schema
+  + check client pid for user cancel interpret in client load
+  + show pid in power management startup/shutdown output messages
+  + stop then fail on client load if the item schema download explicitly failed
+  + remove textmode startup parameter from farm client startup
+  + upgrade to metamod-1.9.3-hg821 and sourcemod 1.5.0-hg3855
+  + reintegrate server plugin code into the script once again
+  + remove insecure from the server and farm client startup parameters
+  + unset location/test variable before each try in connect
+  + fix player count connection output message in connect
+  + wait until the server has registered the initial client connection
+  + remove login mode parameter to farm action and use 'low-hide'
+  + start separate X server for farming and relogin regular sessions to use it
+  + run chvt with sudo to restore the original VT on farm X server start
+  + allow gui/textmode clients in farm to be used if explicitly started prior
+  + use client command alias for triggering item notifications
+  + start farm helper after the initial farm client connects to the server
+  + perform dead process, screen session, and cred checks before the others
+  + set wine check to allow versions 1.5-1.9
+  + right-align the pid in defunct process output message
+  + check for sudo dep and alter /etc/sudoers enable the user to run chvt
+  + if present, alter /etc/X11/Xwrapper.config with sudo to allow user X start
+  + reset display environmental variable with each client action
+  + restore ui modifications if there are no steam farm processes on shutdown
+  + remove cloud marker client pause bind
+  + add sudo notes, remove script name from examples, and adjust readme/usage
+
+[version 0.73]
+  + disallow root from running the script
+  + really fix gist/pci.ids update checks
+  + add bitmap flag to get_window_id(), rename 'visible' flag to 'opacity'
+  + show connection time in client disconnect output message
+  + fix get_prefix_size() for prefixes one GB or larger
+  + hide error if chmod doesn't find a userdata directory to alter in uninstall
+  + show prefix version in uninstall output message
+  + improve wine version parsing
+  + use variables to configure IRC and other settings with explanation in readme
+  + bump prefix version to 5
+  + set the survey completion date to the present on login to prevent the prompt
+  + make config.cfg empty and unwriteable
+  + ensure that the trade hint in friends chat doesn't show via sharedconfig
+  + disable filesystem access to the 'userdata/ugc' directory for steam cloud
+  + add '-clearbeta' paraemter to steam startup
+  + timeout then warn and restart steam if it stalls during init
+  + kill and restart steam ui download if it attempts to download v1370553818
+  + fix get_server_ircname() truncating hostnames with a dash
+  + log steamcmd output to the server log and improve completion check
+  + upgrade to metamod-1.9.3-hg820 and sourcemod 1.5.0-hg3843
+  + fix get_process_usage() with multiple instances of the pid in proc output
+  + only get the first listed gpu device name for the target pci id in status
+  + fix status when the machine has no dnsdomainname
+  + set WINEARCH to 'win32' to prevent the creation of 64-bit wine prefixes
+  + account for nvidia+nouveau and ati/fglrx drivers in hardware detection
+  + fix player count in server plugin restart
+  + don't park clients with server plugin if their tv_nochat cvar isn't 0
+  + fix usage typo, adjust wine dep, space bracketed titles, and fluff readme
+
+[version 0.72]
+  + fix gist and pci.ids update checks
+  + timeout then warn and proceed on upgrade prompt
+  + workaround client config exec error for old account names with periods
+  + read dosfiles in unix format
+  + fix backpack item type and memory usage output
+  + synchronize cred files across machines and ensure collection after logout
+  + disable filesystem access for steam cloud and use a local sharedconfig
+  + add 'stm_com' and 'stm_inv' parameters to the website action
+  + interpret user load cancel with the content log instead of sharedconfig
+  + timeout then warn and proceed if there is no schema message on client start
+  + revert to having server plugin in separate file
+  + show timestamps on server plugin output
+  + show server player count on farm connection output message
+  + improve hardware detection and show wine version in status
+  + don't execute utility for steam urls if the account is not logged in
+  + fix pci.ids update check
+  + negate hammer_dll.dll
+  + fix server plugin compile when bash is not the default shell
+
+[version 0.71]
+  + handle gist being down and prompt before upgrade
+  + check for recent enough wine
+  + set steam network rate to 30000kb
+  + use timestamped client console output
+  + get client connection duration
+  + add marker flags to waiting, warning, and error output messages
+  + show prefix in status
+  + bump prefix version to 4
+  + disable game overlay with localconfig and not just dll overrides
+  + reinstall the prefix if it was moved
+  + set clients to use dxlevel 80 instead of 81
+  + fix steam launcher installation output message
+  + timeout and retry on hung steam ui extraction
+  + fix cloud conflict window check
+  + get tf2 license origin
+  + improve steam ui version checking
+  + upgrade to sourcemod 1.5.0-hg3841
+  + shuffle hlds/steamcmd cache directory instead of failing if it was occupied
+  + include sourceirc with the server
+  + improve fps changes and start/keep farm clients at 1fps without auto aliases
+  + improve client disconnect and timing
+  + fix cpu usage pid check
+  + show server and client version in status
+  + improve/fix account targeting
+
+[version 0.70]
+  + fail unless bash is the running shell
+  + check gist and exit after applying a script update
+  + get client connection state as well as map or ip address
+  + improve output message printing
+  + cache tf2b for 5 minutes and also obtain the steam profile page in list
+  + fix parameter and delete bad cache with better tf2b error handling in list
+  + adjust backpack action output
+  + improve the showing of both memory usages in various output messages
+  + append backpack contents to server log if disconnecting client was idling
+  + show fps in output messages when changing it
+  + restore/set cred backup once in install/uninstall instead of on each login
+  + check item schema for either client or server and print hash
+  + improve cloud conflict check and show version and item schema in client load
+  + erase 'steamcmd/userdata' directory when done checking/updating the server
+  + print player count to server log as it changes in idle plugin
+  + change dedicated idle server map from itemtest to cp_cloak
+  + wait until the server has recieved the item schema
+  + show memory usage on low-client restart, ip on server query
+  + show the location map or 'spawning' when using the idle server on connect
+  + allow farm to run even if there is a noshaderapi client already running
+  + show server player count, process usage, network info, and backend in status
+  + show profile names and improve output and hardware descriptions in status
+  + log output and only execute urls if steam is running in utility
+  + show dependancy in error output message and add bash and bc to the check
+  + change action concatenation char '+' to '@' avoiding account index conflict
+  + use the pciids project instead of pcidatabase.com for hardware detection
+  + change account block char '@' to ':' avoiding conflict with old usernames
+  + allow account target negations with the'-' suffix to usernames or indexes
+  + fail if an invalid action is specified and improve main loop
+  + stop server if no clients are connected instead of checking for hl2 procs
+  + slow mic ping alias from 6000 to 16000 frames
+  + incorporate full readme and adjust usage output
+
+[version 0.69]
+  + fix grep errors when an adjacent file exists containing all numbers
+  + wait until steam registers the application as halted before finishing stop
+  + allow optional parameters in steam pid checks and startup
+  + improve wine program launch
+  + hide registry settings file
+  + prep manifest, guard code, and client files on each login instead of install
+  + only use '-condebug' startup parameter on the server
+  + exit if pdl-idler.cfg is not found when prepping client files on login
+  + hide login window after successful entry
+  + don't supply mat_texture_limit on the command line for farm clients
+  + show server memory usage in relevant output messages
+  + have list cache tf2b for 4 minutes and only show 1 'v' in version info
+  + fail in list if the prefix was not installed
+  + implement backpack action that details backpack contents
+  + implement status action that reports system, process, and account info
+  + implement utility action that runs shell commands/steam urls for an account
+  + implement sleep action that waits for a time or until enter is thrice pushed
+  + only set client directory variable once
+  + use array for targeting accounts by indexes as defined in pdl-idler.conf
+  + check for uninstalled prefixes when no accounts are specified on invocation
+  + don't uncapitalize action paremeters
+  + fix gnome/xfce-session process checks
+  + set 'sv_pure' cvar to -1
+
+[version 0.68]
+  + use /bin/bash instead of /bin/sh as the shell bang
+  + improve client disconnect
+  + show prefix disk size on uninstall
+  + align windows for the chatroom and talks with the private inbreastigator
+  + improve version parsing
+  + track installed versions per client for ui upgrades
+  + rename 'backpack' action to 'website' and add 'willitcraft' parameter
+  + (re)move chat window on arrival
+  + add item+crate count and steam connection hash to account list
+  + fix ui version in account listing due to new package system
+  + remove cloud and launch flags and shorten main status flag in account list
+  + print error on client command failure
+  + allow account group specification
+
+[version 0.67]
+  + suffix account read wait/pid marker config files with a '+'
+  + allow chat if there is any app license (instead of just tf2)
+  + only validate srcds content after initial install
+
+################################################################################
+
+[??????? 0.66]
+  +
+  C REVERT BAD ASS WRITEIP AND yeah....
+  + remove paragraph on gcf files in readme
+
+[VERSION 0.65] right-hand-opputs, steampipe server
+
+[VERSION 0.64] create
+
+################################################################################
+
+[version 0.63]
+  + use addip/writeip and the 'banned_ip.cfg' file for client command execution
+  + run mmute client command alias before disconnecting
+  + simplify client command read alias fps changing
+  + bump prefix version to 2 and use hidden marker file
+  + explicilty create/update prefix with regedit instead of launcher in install
+  + remove 'user token' and 'currentversion/run' registry settings
+  + set default dimensions of trade window to 648x445 and place it top-right
+  + add low priority/resource steam mode that negates chrome and explorer.exe
+  + set default client resolution to 640x480
+  + fix syntax error when no parameter is supplied to enter
+  + check for the steam id instead of just the wineprefix in backpack
+  + fix sourcemod.cfg typo when blanking its contents
+  + login steam in low-resource mode if it wasn't already active in farm
+  + negate commedit, datamodel, pet, and vmt dlls from being loaded
+  + remove 'props_break_max_pieces' and 'sensitivity' client cvars
+
+[VERSION 0.62] singularregedit, farm, join/spec
+  + slow the 30 fps client command read alias to to 60 fps
+  + check gcf files once on invocation instead of each login
+  + bump prefix to version 1
+  + PREPPAGE
+
+[version 0.61]
+  + reorder function definitions
+
+[version 0.60]
+  + correct shell bang typo
+  + fix atom window id check
+  + don't reference the script location directory when unnccessary
+  + rely on the display variable or default ":0.0" for the X server display id
+  + start x11vnc if installed when the script has to start the X server
+  + improve video driver module check and use account-named registry files
+  + initiate jumplist ui settings to 0 and adjust it from 1545 to 521 on login
+  + implement exit action to leave the chat instead of using enter as a toggle
+  + upgrade to sourcemod 1.4.7
+  + delete data extracts and gcf links after each account instead of after all
+
+################################################################################
+
+[??????? 0.59] Leave thisOne still the middle of second run through
+  + don't require pdl-idler.conf
+  + reinclude micspam client alias
+  ! ECHO DISCONNECT drawviewmodel, VOLUME 0
+  ? include close window function
+  + CREDS/GUARD
+  + PREFIX
+  + CONFIG PREPS
+  + CAUSE NO MANUAL OVERLAY DISABLE NEEDED
+  + NEWLY DOING THE SSA STUFF?
+  + WINESERVER WAIT ON LOGIN?????
+  + CLOUD/UPDATE REGS
+  + HANDLE THEM NEW UI INSTALLS AND BOOTSTRAPS
+  + MONTIOR LOGIN MORE THROUGHLY
+  + WAIT ON SSA, DO AVOID DEFAULT ONLINE, RESTART FOR OCNFIG^
+  + F2P1
+  + CHAT LOGS THEM IN NOW/LAME TOGGLE
+  + LOAD MEGA MONITORING + DISABLEING PM RIGHT AT THE MOMEMNT?
+  + SERPERATE CONNECTION FROM START ++ DISONECT + ISCONNECTED
+  + IDLER_COMMAND
+  + NO MORE PING?
+  + IDLEER_BACKPACK (WEBSITE TYPE)
+  + IDLER_LIST
+  + IDLER_KILL
+  + MORE DLLS AND THEM WINE PROCS
+  + GET SOME ACCTS IF NONE SPECIFIED FROM EXISINTG
+  + ACTION PARAMETERS
+  + RELOGIN/RESTARTS?
+  + add uninstall action
+  + share steam ui download packages
+
+################################################################################
+
+[version 0.58]
+  + store server console logs
+  + include view action to cycle through screen sessions
+
+[version 0.57]
+  + set and use client startup options in steam config instead of on invocation
+  + use exec file to set client command read alias polling frequency on startup
+  + remove client binds and trade spam and micspam aliases
+
+[version 0.56]
+  + include window check functions and revert xdotool dependency
+  + prompt for new install and prep data/config links before steam pid check
+  + silence all file downloads and stop if the pci/hldsupdatetool downloads fail
+  + revert chat auto login hibernate and multiple windows
+  + slow offline/online/enter/command wait sleeps from 0.1 to 0.25
+  + start gui clients at 30 fps and textmode clients at 1 fps
+  + capture server bootstrap updating in screen
+  + integrate server plugin code into the script
+  + use sv_cheats and run server at 10 fps
+  + deduce correct network device and ip address of server for client connection
+  + have connecting client send message, and say 'stop' not 'quit' on disconnect
+
+[version 0.55]
+  + start clients at 10 fps with sv_cheats 1
+  + call regedit before each steam launch instead of just once per login attempt
+
+[version 0.54]
+  + adjust jumplist steam ui setting flag from 1705 to 1545
+  + require xdotool and use it to check for windows
+  + add variable for having accounts join and and hibernate in chat on login
+  + ensure if the account has premium tf2 before joining chat
+  + make chat action hide/show the window with xdotool
+  + have account friend chats open in a seperate window
+  + wait for the main window with xdotool to finish login instead of appinfo_log
+  + remove superfluous tf/maps mkdir call
+  + wait for window to ask for password instead of assuming via SteamAppData.vdf
+  + wait until the account has finished changing friends state
+  + quicken client command-read poll from 120 to 60 frames
+  + hide x pid file
+  + download steam launcher and pci id file on install instead of on invocation
+  + don't print output message if not joining a game and are only connecting
+  + upgrade to sourcemod 1.4.2
+  + use screen for the server content updating
+  + ensure the hlds/steam cache directory link isn't the idler's before failing
+  + include general client command function 'cmd'
+  + add timestamp to disconnect announcement performed now as a call to cmd
+  + remove client quit alias and just write 'quit' to readcmd.cfg
+  + don't use any extra fonts
+
+[version 0.53]
+  + use the launcher install to create the prefix instead of regedit
+  + delete registry key for startup applications
+  + include chat action for joining a public chatroom
+  + remove prediction of high cpu consumption/crash in readme for first login
+
+[version 0.52]
+  + download, install, start, connect to, and stop a dedicated idle server
+  + include sourcemod plugin for server that parks clients in the spawning phase
+  + don't download or use achievement_idle map and rely on itemtest
+  + remove client movement alias file/binds
+  + rename 'pdl-idler_autoexec.cfg' to 'pdl-idler.cfg'
+  + use port 27016 as the start of the client listen port range
+
+[version 0.51]
+  + don't use cpulimit
+
+[version 0.50]
+  + monitor client console via the screen instead of polling the log file
+  + always suppress winedebug output
+  + fix X process check
+
+[version 0.49]
+  + print output messages with a timestamp
+  + mark when the X server starts instead of relying on user variable
+  + don't login when going online
+  + check server even if it was down for each client connecting in an invocation
+  + suppress power manager restart output
+  + improve client trade-spam aliases
+  + hide servers from master list
+  + disable mp_timeout
+
+[version 0.48]
+  + add ping action that instructs clients to message the server
+  + quicken client command-read poll from 240 to 120 frames
+  + use one main loop for each specified account
+
+[version 0.47]
+  + change client resolution from 640x480 to 800x600
+  + set client timeout cvar to 0
+
+[version 0.46]
+  + have clients print console output to logfile
+  + create separate screen session that polls the client console log
+  + wait until client joins the game after connecting
+
+[version 0.45]
+  + don't set windows mode to win98 and rely on default
+  + hide client achievement hud element
+  + mute voice chat on client startup
+
+[version 0.44]
+  + include binds and cfg file containing client movement aliases
+  + append marker command line parameter to client startup
+  + fix cpulimit removals
+  + add trade spam client aliases
+  + bind mouse5 to 'inspect' in the client
+  + hide maxplayer/blacklist/favorites warnings in client
+  + show item quality outlines in client
+  + increase volume amounts in relevant client binds
+  + use mat_disable_d3d9ex cvar and fix mat_envmaptgasize typo
+  + change mat_picmip from 4 to 2
+  + remove avglight, drawdecals, and drawviewmodel render cvar changes
+  + move net_graph cvar to autoexec instead of the command line
+
+[VERSION 0.43]
+  + initial drop to git hub

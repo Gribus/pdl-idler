@@ -1,0 +1,38 @@
+; pdl-idler_registry.reg (0.9026)
+; Copyright (c) 2011-2016 byteframe@primarydataloop
+
+; This program is free software: you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation, either version 3 of the License, or
+; (at your option) any later version.
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with this program. If not, see <http://www.gnu.org/licenses/>
+
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Wine\WineDbg]
+"ShowCrashDialog"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
+"winemenubuilder.exe"=""
+"dxsetup.exe"=""
+"vcredist_*.exe"=""
+"ComradeSetup.exe"=""
+"amdcpusetup.exe"=""
+"crashhandler.dll"=""
+"msi.dll"=""
+"winedbg.exe"=""
+"plugplay.exe"=""
+
+[HKEY_CURRENT_USER\Software\Wine\Drivers]
+"Audio"="alsa"
+
+[HKEY_CURRENT_USER\Software\Valve\Steam]
+"AlreadyRetriedOfflineMode"=dword:00000001
+"Offline"=dword:00000000

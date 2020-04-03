@@ -1,0 +1,79 @@
+// pdl-idler_localconfig.vdf (0.9026)
+// Copyright (c) 2011-2016 byteframe@primarydataloop
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>
+
+"UserLocalConfigStore"
+{
+  "system"
+  {
+    "EnableGameOverlay" "1"
+    "JumplistSettings" "65279"
+    "InGameOverlayShortcutKey" "Ctrl\tKEY_TAB"
+    "InGameOverlayShowFPSContrast"    "1"
+    "InGameOverlayShowFPSCorner"    "3"
+    "InGameOverlayScreenshotHotKey" "Ctrl\tKEY_F12"
+    "JumplistSettingsKnown" "65535"
+    "NavUrlBar" "1"
+    "SteamControllerVGUIWarning" "1"
+    "SteamVRHMDVGUIWarning" "1"
+  }
+  "HideSharingNotifications" "1"
+  "News"
+  {
+    "NotifyAvailableGames" "0"
+  }
+  "streaming_v2"
+  {
+    "EnableStreaming" "1"
+    "QualityPreference" "2"
+    "EnableHardwareDecodingV2" "1"
+    "EnableDebugOverlay" "1"
+    "EnableTrafficPriority" "1"
+    "EnableHardwareEncoding_NVIDIA" "1"
+    "EnableHardwareEncoding_Intel" "1"
+  }
+  "Broadcast"
+  {
+    "Permissions" "0"
+  }
+  "Software"
+  {
+    "Valve"
+    {
+      "Steam"
+      {
+        "SSAVersion" "2"
+        "PrivacyPolicyVersion" "2"
+        "apps"
+        {
+          "440"
+          {
+            "LaunchOptions" "nojoy"
+          }
+        }
+      }
+    }
+  }
+  "friends"
+  {
+    "Notifications_ShowIngame" "0"
+    "Notifications_ShowOnline" "0"
+    "Notifications_ShowMessage" "0"
+    "ShowBlockCommunicationWarning" "0"
+    "Sounds_PlayMessage" "0"
+    "AutoSignIntoFriends" "0"
+    "ShowTimeInChatLogCheck" "1"
+  }
+}

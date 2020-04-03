@@ -1,0 +1,323 @@
+pdl-idler (0.9026) HELP
+
+DESCRIPTION
+-----------
+
+  pdl-idler will install, update, and run multiple instances of steam and tf2
+  game clients in individual wine prefixes for the purpose of idle farming. As
+  many considerations as possible are made to reduce cpu load and memory/disk
+  consumption. Downloaded data and program files are shared between account
+  prefixes, and a special dedicated idle server for item farming is started that
+  parks clients in the connection state, so they can run at one fps and run in a
+  a low-memory mode. 32 of these farm clients can fit in one game/X server pair,
+  and a helper script will announce the item drop notifications. Also, status
+  and backpack actions, crafting/trading routines, utilities, and wrappers
+  around community functions are provided.
+
+REQUIREMENTS
+------------
+
+  bash, bc, gcc, git, glxinfo, netcat, nodejs, npm, screen, sudo, wget, xvfb,
+  wine >= 1.7.8, xdotool, xwininfo, and xprop are required. x11vnc and ssh are
+  optionally used when the script starts an X/Xvfb display server. aplay and
+  flite are required for item drop log sound and speech.
+
+INSTALLATION
+------------
+
+  Download the zipfile from 'https://gist.github.com/primarydataloop/1432762',
+  then extract its contents to a location such as '${HOME}/pdl-idler'. The
+  script will prompt for later updates from this gist site. When employing
+  multiple machines, it is recommended that the 'share' directory be assigned
+  among these hosts via samba to allow for synchronization of data and logs.
+
+CONFIGURATION
+-------------
+
+  Copy 'pdl-idler_sample.conf' to 'share/pdl-idler.conf', and modify it. You
+  will need to specify an apikey, and fill the sample account array/lists with
+  real accounts. Also, you may adjust some miscellaneous variables not otherwise
+  controlled by action parameters.
+
+USAGE
+-----
+
+  bash pdl-idler.sh ACTION1{,/%}ACTION2=arg^x\;y... {acct1 acct2/pass#email ...}
+
+  pdl-idler accepts a list of actions to perform (separated by ',' or '%' ) and
+  accounts (separated by spaces). Actions grouped with the '%' character will
+  all execute before proceeding to the next account, instead of having each
+  action execute on all accounts. To supply optional parameters, append an
+  action with the '=' character followed by an argument string in which all
+  spaces are replaced with the '^' character, and semicolons are escaped'. If no
+  accounts are specified, then all known accounts will be selected. To reference
+  an account by its position in the list, preface the index with '+'. Account
+  blocks can be referenced with a preceding ':'. For selecting a range of
+  account indexes or blocks use the format +X..Y or :X..Y. You may also negate
+  account selections by prefacing element with a '-'.
+
+  The following are the available actions with optional parameters in brackets.
+
+  [ help{=action} ] /show this page or an action description then quit
+    Print a short table of the available actions or a longer description for an
+    action supplied as a parameter. (def: "")
+
+  [ login{=mode} ] /install/prep, then authenticate and login {lo}
+    If not already running, the X server will be started (followed by x11vnc if
+    it is installed), then a separate wineprefix for the account will be created
+    or updated. If necessary, the steam client will be installed, data links
+    and directories will be created, and some configuration will be prepped. The
+    user may supply the 'hi' mode flag to launch steam with dlls enabled, high
+    graphics/client settings, and support for the in-game overlay, or the 'lo'
+    flag to disable web support and other features to save memory. If a password
+    and e-mail address suffix an account target, then steam will be prepped for
+    an account creation. Upon initial login of an account, the user may have to
+    input the password (if it was not pre-supplied) and/or a guard code. If
+    there was no credential backup at time of install, steam will be restarted
+    so the new configuration can be applied. (def: "")
+
+  [ create ] /	 create a new account then login
+    After the user is prompted for a password and an e-mail address, steam be
+    will be prepped for account creation, and a login will start. When the
+    greeting window arrives the account form fields will be automatically filled
+    and submitted, the account will be created, then the login will proceed.
+
+  [ online{=type} ] /if logged in, sign on) {(online)|busy|away|trade|play}
+    If logged in, sign on to steam friends, with either' online',' busy',
+    'away', 'trade' or 'play' as the status type. (def: "online")
+
+  [ offline ] /	 if online, sign out of friends
+    If online, sign off steam friends.
+
+  [ enter{=id} ] /join public chatroom {(103582791432273268)}
+    Mark the current friends status, then go online and join a public chatroom
+    via its community id. (def: "103582791435720285")
+
+  [ exit ] /	 leave public chatroom then restore prior friends status
+    Leave the chatroom and restore prior friends status.
+
+  [ friend{=accts} ] /perform/queue friend invites {(cmdline)}
+    Perform or queue friend invite request/acceptances for each account defined
+    in the action parameter (where multiple accounts are separated by a '-') or
+    for all accounts that were targeted on invocation. (def: target accounts)
+
+  [ play{=mode} ] /login then start tf2 {low}
+    Login if necessary (observing mode parameter), then start the client in
+    gui mode. After a client launch of any type is initiated, power management
+    will be disabled. (def: "")
+
+  [ command{=cmd} ] /if tf2 is running, execute command {(?)}
+    If the client is running, execute console commands as supplied from the
+    action parameter or prompt. (def: prompts)
+
+  [ connect{=loc} ] /start tf2 then join game, map, or idle {(idle)}
+    If the client isn't running, start it, then connect to a server via the ip
+    address or host a listen server via the specified map name. If there is no
+    parameter specified (or if the server cannot be pinged), a dedicated idle
+    server will be started and will connect to an IRC server, the client will
+    lower its fps, then will connect to it. If connecting to a normal server
+    elsewhere, farm clients will restart in normal mode. (def: use idle server)
+
+  [ farm ] /	 start low steam+tf2/Xvfb/helper then idle
+    Logout of a normal session, start a dedicated server and a separate X server
+    on the next display (if needed), then login with the 'hide' login flag on
+    the separate display. If not running, start the client in low-resource,
+    noshaderapi mode, then connect. If this is the initial farm client load, an
+    input helper script will be started that is used to automatically accept and
+    announce drop notifications.
+
+  [ disconnect ] /if in-game, disconnect from the server
+    If connected, disconnect from the server. If the server was a dedicated idle
+    server running on this host, print the contents of the account backpack to
+    the server log, then reset the client fps. If the idle server player count
+    is 0, then it will be stopped.
+
+  [ stop{=kill} ] /if running, quit/kill client {yes}
+    Stop the client with a console command or process kill (if it is hung or the
+    kill parameter is 'yes'). If the script is finished and there are no clients
+    running, desktop power management will be restored. (def: "")
+
+  [ logout{=kill} ] /stop then close/kill steam {yes}
+    Stop, then logout out of steam (or kill the process if it is hung or the
+    kill parameter is 'yes'. If there are no other related steam processes
+    remaining, the appropriate X server will be stopped if the script had
+    originally started it. (def: "")
+
+  [ website{=web} ] /browse {(tf2b)|tf2items|backpack|willitcraft|stm_com/inv}
+    Open tf2-related websites for an initiated account in the default browser.
+    The choices include 'tf2b',' tf2items', 'backpack.tf', 'stm_com', 'stm_inv',
+    and 'willitcraft'. (def: "stm_inv")
+
+  [ list{=ref} ] /list account information {no|yes}
+    Print account information consisting of an item/crate count, the steam user
+    id, the last 6 characters of the connection hash, version information and
+    status flags. The item data will be read from a cache if it isn't older than
+    5 minutes and the refresh parameter isn't 'yes', or if it is present and the
+    refresh parameter is 'no'. (def: "")
+
+  [ status{=ref} ] /show system and process statistics {no|yes}
+    Show system and server information, then list selected accounts (if they are
+    logged in) followed by their process statistics. (def: "")
+
+  [ backpack{=ref} ] /detail backpack contents {no|yes}
+    List, then detail backpack contents. (def: "")
+
+  [ log{=files} ] /page {(all)-tf-sv-app-boot-cloud-conn-content-ccfg-lcfg-node}
+    Page log files, including the running server, client console, and other
+    steam files. The choices include 'tf', 'sv', 'app', 'boot', 'cloud', 'conn',
+    'content', 'ccfg', 'lcfg', 'node', and 'all'. Press Q to cycle through each
+    log or CTRL-C to abort. The files parameter may be prefixed with the name of
+    an alternate pager program, and should that be prefixed with an underscore,
+    the execution will happen in the background. (def: "all")
+
+  [ utility{=utils} ] /execute sh commands or steam urls {(regedit)}
+    Execute shell commands and steam urls (if it is started) under the script
+    environment for the selected account prefix. (def: "regedit")
+
+  [ uninstall{=k} ] /logout then remove wineprefix {yes}
+    Logout (normally or with a kill), backup credentials, then remove client
+    files and wineprefix. (def: "")
+
+  [ delete{=kill} ] /uninstall then remove credential backups {yes}
+    Uninstall, then remove the credential backup and related files. (def: "")
+
+  [ sleep{=time} ] /wait awhile or til enter is thrice pressed {(1m)}
+    Wait for a specified period of time (in seconds) or until enter is pressed.
+    If this action is not grouped with any others (via the '%' character) it
+    will only execute once, instead of being executed for each logged-in
+    account. (def: "5")
+
+  [ fake{=appids} ] /feign play activity for game(s) {(440)}
+    Feign gameplay in the background for tf2 or the underscore-separated list of
+    appids (def: "440")
+
+  [ rename{=format} ] /generate profile name {(~word-~INT_~WORD~INDEX}
+    Generate and assign a profile name for an account, according to a format
+    where "~word or ~Word" will be replaced with random uppercase or lowercase
+    dictionary word, where "~INT" will be replaced with a random single-digit
+    integer, and "~INDEX~" will be replaced with the account index as referenced
+    from share/pdl-idler.conf. Finally, ~ACCT will be replaced with the account
+    name. (def: "~word-~INT_~WORD~INDEX")
+
+  [ craft{=no} ] /turn common weapons into metal {(0)}
+    Turn weapons into metal and scrap into reclaimed, where only common
+    weapons are consumed, excluding any other negations of items with defindexes
+    from an underscore-separated list. (def: "0")
+
+  [ waste{=del} ] /destroy items {(crates)}
+    Destroy all instances of items with defindexes from an underscore-separated
+    list. (def: "crates")
+
+  [ sort ] /	 sort player backpack by item age
+    Sort the player backpack by item age.
+
+  [ deterge{=n:d} ] /craft, waste, then sort {(0:crates)}
+    Run craft, waste, and sort in one node login session. (def: "0:crates")
+
+  [ trade={offer} ] /send/receive items {(?@all_-crates)}
+    Send items from selected accounts to the index/name/uid specified in the
+    offer parameter. All items from the tf2/steam backpacks will be added if
+    nothing suffixes the target account. If 'nosc' is present, the steam
+    community items will be neglected, while 'nosg' will neglect game gifts. By
+    default, all tf2 items will be sent unless a underscore-delimited list of
+    additive item defindexes are added, resulting in the selection of only these
+    items. To trade all tf2 items with specific negations, specify 'all' and
+    append select defindexes prefixed with a '-'. (def: "prompts@all_-crates)"
+
+  [ harvest={n:d.o} ] /deterge+trade {(0:crates.?@all_-crates)}
+    Run craft, waste, trade, and sort in one node login session. Separate the
+    craft/waste arguments with a ':', and suffix the offer parameter with a '.'.
+    (def: "0:crates.prompts@all_-crates")
+
+  [ register ] /login and/or request confirmation email
+    Login, then request an e-mail confirmation if needed.
+
+  [ exhibit={ex} ] /login and/or relax privacy settings {(ic)}
+    Check inventory and/or comment permissions (based on the presence of 'i/c'
+    in the argument flag), then login and relax settings if needed. (def: "ic")
+
+  [ socialize={f} ] /login then complete community badge and/or vote
+    Login, then attempt to complete a majority of the community ambassador badge
+    objectives and vote if there is a store event. A common trade bot will be
+    the friend target unless an account name, index, or uid is supplied as the
+    action parameter. (def: "")
+
+  [ discover ] /login if appropriate, then click through store discovery queue
+    Login, then browse through store discovery queue.
+
+CLIENT COMMAND ALIASES
+----------------------
+
+  Useful command aliases are provided for pdl-idler clients to take advantage
+  of, with either the gui console or 'command' action.
+
+    | aload |
+      Start recurring client command loops.
+
+    | astop |
+      Halt recurring client command loops for the life of the client.
+
+    | mmute |
+      Stop voice transmission and mute all players.
+
+    | mhear |
+      Stop voice transmission and unmute all players.
+
+    | mtalk |
+      Unmute all players and start voice transmission.
+
+EXAMPLE INVOCATIONS
+-------------------
+
+  "login,play,online mann1 mann2"
+    Login mann1 and mann2, start their clients, then sign them onto friends.
+
+  "list,login%play,enter :2"
+    List accounts in block 2, login and start each, then have them enter chat.
+
+  "login=high,play,connect=cp_well ben"
+    Login ben with the overlay, start the gui client, then host a listen server.
+
+  "farm,sleep=10h,logout :1 -+1 jerry"
+    Farm block 1 with jerry (without ben) for 10 hours, then logout.
+
+  "connect=12.34.56.78,join=red-pyro,command=say^hello\;volume^1\;mtalk mann4"
+    Connect mann4 to a friendly server, then rock the mic as pyro in red spawn.
+
+  "log=app-cloud,utility=steam://settings\;regedit +2"
+    View app and cloud logs, steam settings, and registry of the second account.
+
+  "friend=herr1-herr2-herr3,website=stm_com ben"
+    Get ben some lady friends, then check out his profile.
+
+  "waste=673_5635 +2"
+    Delete all winter noisemakers and robocrates from mann1's backpack.
+
+  "craft=42_311_433 jerry"
+    Make metal from common weapons while preserving sandviches+steaks+fishcakes.
+
+  "deterge=59:5639,fake mann3"
+    Process bp (saving dead ringers and deleting claim checks), then feign play.
+
+  "trade=ben@all_nosc_-5708_-5719 mann2 mann3"
+    Send all of mann2/3's items to ben sans acorns, strong boxes, and all cards.
+
+  "harvest=56:crates.+2@5709_5640 herr3 herr4"
+    Craft (no hunstman), waste crates, send gourd/sac to mann1, then sort.
+
+SUPPORT/LINKS
+-------------
+
+  < irc://irc.freenode.net/primarydataloop >
+    Discussion hub for advanced idler science.
+
+  < steam://url/GroupSteamIdPage/103582791432273268 >
+    Official steam community group.
+
+  < https://gist.github.com/1432762#comment-833847 >
+    Start of the github gist comment section for pdl-idler.
+
+ACKNOWLEDGMENTS
+---------------
+
+  Thanks to tf2b, ##slackware, sourceirc, xdotool, hllib, node-steam, gnu, etc.

